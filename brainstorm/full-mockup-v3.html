@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Garcia Katz — Portfolio Mockup v3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@400;500&display=swap');
+
+  :root {
+    --navy:   #0D1B2A;
+    --navy2:  #122333;
+    --navy3:  #1a2f42;
+    --coral:  #FF6B6B;
+    --yellow: #FFD93D;
+    --sky:    #6BCBEA;
+    --violet: #C77DFF;
+    --white:  #F4F8FB;
+    --muted:  #8aa0b4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+  /* ─── NAV ─────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(13,27,42,0.95); backdrop-filter: blur(10px);
+    border-bottom: 1px solid #1e3048;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 60px; height: 64px;
+  }
+  .nav-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); letter-spacing: -0.5px; }
+  .nav-logo span { color: var(--coral); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a { font-size: 13px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); text-decoration: none; }
+  .nav-links a:hover { color: var(--yellow); }
+
+  /* ─── HERO ────────────────────────────────── */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 100px 60px 60px; position: relative; overflow: hidden;
+  }
+  .hero-bg-accent { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(199,125,255,0.12) 0%, transparent 70%); pointer-events: none; }
+  .hero-bg-accent2 { position: absolute; bottom: 40px; left: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(107,203,234,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--sky); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 2px; background: var(--sky); }
+  .hero-name { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: clamp(52px, 8vw, 110px); line-height: 0.95; letter-spacing: -3px; color: var(--white); max-width: 900px; }
+  .hero-name .accent-coral { color: var(--coral); }
+  .hero-name .accent-yellow { color: var(--yellow); }
+  .hero-tagline { margin-top: 32px; font-size: 18px; color: var(--muted); max-width: 520px; line-height: 1.6; }
+  .hero-cta { margin-top: 48px; display: flex; gap: 16px; align-items: center; }
+  .btn-primary { background: var(--coral); color: #fff; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 32px; border-radius: 4px; border: none; cursor: pointer; text-decoration: none; display: inline-block; }
+  .btn-outline { border: 2px solid var(--muted); color: var(--muted); font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; padding: 12px 32px; border-radius: 4px; background: none; cursor: pointer; text-decoration: none; display: inline-block; }
+  .hero-scroll-hint { position: absolute; bottom: 40px; left: 60px; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 12px; }
+  .hero-scroll-hint::after { content: ''; display: block; width: 60px; height: 1px; background: var(--muted); }
+
+  /* ─── SECTION COMMON ──────────────────────── */
+  section { padding: 100px 60px; }
+  .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
+  .section-eyebrow::before { content: ''; display: block; width: 32px; height: 2px; }
+  .section-title { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: clamp(32px, 4vw, 52px); letter-spacing: -1px; line-height: 1; margin-bottom: 48px; }
+
+  /* ─── ABOUT ───────────────────────────────── */
+  .about { background: var(--navy2); border-top: 1px solid #1e3048; }
+  .about .section-eyebrow { color: var(--yellow); }
+  .about .section-eyebrow::before { background: var(--yellow); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+
+  .about-bio { font-size: 17px; color: var(--muted); line-height: 1.75; }
+  .about-bio strong { color: var(--white); }
+
+  /* Right column: 2×2 detail grid on top, award card below */
+  .about-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .detail-cell {
+    background: var(--navy3);
+    border-radius: 8px;
+    padding: 16px 18px;
+    border-top: 3px solid;
+  }
+  .detail-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 7px;
+  }
+  .detail-value { font-size: 14px; color: var(--white); font-weight: 600; line-height: 1.4; }
+  .detail-sub { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+
+  /* Award card */
+  .award-card {
+    background: var(--navy3);
+    border-radius: 8px;
+    border: 1px solid rgba(255,217,61,0.25);
+    overflow: hidden;
+  }
+  .award-card-inner {
+    display: flex; gap: 0; align-items: stretch;
+  }
+  /* Logo placeholder */
+  .award-logo {
+    width: 96px; flex-shrink: 0;
+    background: rgba(255,217,61,0.06);
+    border-right: 1px solid rgba(255,217,61,0.15);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 8px; padding: 20px 10px;
+  }
+  .award-logo-placeholder {
+    width: 52px; height: 52px; border-radius: 8px;
+    border: 2px dashed rgba(255,217,61,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .award-logo-hint {
+    font-size: 9px; text-align: center; color: rgba(255,217,61,0.4);
+    letter-spacing: 0.5px; line-height: 1.4;
+  }
+  /* Award content */
+  .award-content {
+    flex: 1; padding: 20px 22px;
+  }
+  .award-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--yellow); margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .award-eyebrow::before { content: '🏆'; font-size: 13px; }
+  .award-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 15px; color: var(--white);
+    line-height: 1.35; margin-bottom: 6px;
+  }
+  .award-sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .award-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--yellow);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,217,61,0.3);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .award-link:hover { color: var(--white); }
+  .award-link::after { content: '↗'; font-size: 12px; }
+
+  /* ─── EXPERIENCE ──────────────────────────── */
+  .experience { background: var(--navy); border-top: 1px solid #1e3048; }
+  .experience .section-eyebrow { color: var(--violet); }
+  .experience .section-eyebrow::before { background: var(--violet); }
+  .exp-list { display: flex; flex-direction: column; }
+  .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid #1e3048; }
+  .exp-item:last-child { border-bottom: none; }
+  .exp-period { font-size: 13px; color: var(--muted); font-weight: 500; padding-top: 6px; }
+  .exp-role { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: var(--white); margin-bottom: 4px; }
+  .exp-company { font-size: 14px; color: var(--violet); font-weight: 500; margin-bottom: 10px; }
+  .exp-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+  /* ─── REEL ────────────────────────────────── */
+  .reel-section { background: #060e17; border-top: 1px solid #1e3048; padding: 80px 60px; }
+  .reel-label { font-size: 11px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--coral); display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .reel-label::before { content: ''; display: block; width: 32px; height: 2px; background: var(--coral); }
+  .reel-heading { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: clamp(28px, 3.5vw, 44px); letter-spacing: -1px; color: var(--white); margin-bottom: 36px; }
+  .reel-heading span { color: var(--coral); }
+  .reel-container { width: 100%; aspect-ratio: 16 / 7; background: #0a1520; border-radius: 12px; border: 1px solid #1e3048; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .reel-container::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,107,107,0.06) 0%, transparent 40%), linear-gradient(315deg, rgba(199,125,255,0.06) 0%, transparent 40%); }
+  .reel-play-wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; position: relative; z-index: 1; }
+  .reel-play-btn { width: 80px; height: 80px; border-radius: 50%; background: var(--coral); display: flex; align-items: center; justify-content: center; font-size: 28px; color: #fff; box-shadow: 0 0 0 16px rgba(255,107,107,0.12), 0 0 0 32px rgba(255,107,107,0.05); }
+  .reel-play-label { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+  .reel-duration { position: absolute; bottom: 20px; right: 24px; font-size: 12px; color: var(--muted); letter-spacing: 1px; background: rgba(6,14,23,0.8); padding: 4px 12px; border-radius: 20px; }
+
+  /* ─── WORK SECTIONS ───────────────────────── */
+  .work-section { border-top: 1px solid #1e3048; }
+  .work-motion  { background: var(--navy2); }
+  .work-graphic { background: var(--navy); }
+  .work-social  { background: var(--navy2); }
+  .work-motion  .section-eyebrow { color: var(--coral); }
+  .work-motion  .section-eyebrow::before { background: var(--coral); }
+  .work-graphic .section-eyebrow { color: var(--sky); }
+  .work-graphic .section-eyebrow::before { background: var(--sky); }
+  .work-social  .section-eyebrow { color: var(--violet); }
+  .work-social  .section-eyebrow::before { background: var(--violet); }
+
+  .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .work-card { background: var(--navy3); border-radius: 10px; overflow: hidden; cursor: pointer; border: 1px solid transparent; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; }
+  .work-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .work-card.placeholder { border: 2px dashed #1e3048; background: transparent; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; gap: 10px; cursor: default; }
+  .work-card.placeholder:hover { transform: none; box-shadow: none; }
+  .placeholder-plus { width: 40px; height: 40px; border-radius: 50%; border: 2px dashed #2a4060; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #2a4060; }
+  .placeholder-text { font-size: 12px; color: #2a4060; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+  .card-thumb { height: 180px; position: relative; overflow: hidden; background: var(--navy2); }
+  .card-thumb-count { position: absolute; top: 10px; right: 10px; background: rgba(13,27,42,0.85); font-size: 11px; color: var(--muted); font-weight: 600; padding: 3px 8px; border-radius: 20px; }
+  .card-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,107,107,0.9); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #fff; }
+  .card-body { padding: 16px 18px 20px; }
+  .card-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 16px; color: var(--white); margin-bottom: 6px; line-height: 1.2; }
+  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .card-hover-hint { font-size: 11px; color: #2a4060; letter-spacing: 1px; text-transform: uppercase; margin-top: 10px; display: flex; align-items: center; gap: 6px; }
+  .card-hover-hint::before { content: '→'; }
+  .work-motion  .work-card:hover { border-color: var(--coral); }
+  .work-graphic .work-card:hover { border-color: var(--sky); }
+  .work-social  .work-card:hover { border-color: var(--violet); }
+
+  /* ─── MODAL ───────────────────────────────── */
+  .modal-overlay { display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(5,12,20,0.95); align-items: center; justify-content: center; padding: 40px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: var(--navy2); border-radius: 12px; overflow: hidden; max-width: 860px; width: 100%; border: 1px solid #1e3048; position: relative; }
+  .modal-close { position: absolute; top: 16px; right: 20px; font-size: 22px; color: var(--muted); cursor: pointer; background: none; border: none; z-index: 10; line-height: 1; }
+  .modal-close:hover { color: var(--white); }
+  .modal-slideshow { position: relative; height: 420px; background: #060e17; overflow: hidden; }
+  .slide { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 80px; opacity: 0; transition: opacity 0.35s; }
+  .slide.active { opacity: 1; }
+  .slide-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 100%; display: flex; justify-content: space-between; padding: 0 16px; pointer-events: none; }
+  .slide-btn { pointer-events: all; background: rgba(13,27,42,0.8); border: 1px solid #1e3048; color: var(--white); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 16px; }
+  .slide-btn:hover { background: var(--coral); border-color: var(--coral); }
+  .slide-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #2a4060; }
+  .dot.active { background: var(--coral); }
+  .modal-body { padding: 28px 32px 32px; }
+  .modal-title { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 26px; color: var(--white); margin-bottom: 12px; }
+  .modal-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+  /* ─── CONTACT ─────────────────────────────── */
+  .contact { background: var(--navy2); border-top: 1px solid #1e3048; }
+  .contact .section-eyebrow { color: var(--yellow); }
+  .contact .section-eyebrow::before { background: var(--yellow); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-intro { font-size: 18px; color: var(--muted); line-height: 1.7; }
+  .contact-intro strong { color: var(--white); }
+  .contact-links { display: flex; flex-direction: column; }
+  .contact-item { display: flex; align-items: center; gap: 20px; padding: 20px 0; border-bottom: 1px solid #1e3048; }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-icon { width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .contact-detail-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+  .contact-detail-value { font-size: 15px; color: var(--white); font-weight: 600; }
+
+  /* ─── FOOTER ──────────────────────────────── */
+  footer { background: #060e17; border-top: 1px solid #1e3048; padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 16px; color: var(--muted); }
+  .footer-name span { color: var(--coral); }
+  .footer-copy { font-size: 13px; color: #2a4060; }
+
+  .annotation { display: inline-block; background: #FFD93D22; color: #FFD93D; border: 1px solid #FFD93D44; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SGK<span>.</span></div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#reel">Reel</a>
+    <a href="#motion">Motion</a>
+    <a href="#graphic">Graphic Design</a>
+    <a href="#social">Social Media</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-accent"></div>
+  <div class="hero-bg-accent2"></div>
+  <div class="annotation">Design Mockup v3 — About Me sidebar fixed, award upgraded</div>
+  <div class="hero-eyebrow">Buenos Aires, Argentina</div>
+  <div class="hero-name">
+    SOFIA<br>
+    <span class="accent-coral">GARCIA</span><br>
+    <span class="accent-yellow">KATZ</span>
+  </div>
+  <p class="hero-tagline">Senior Multimedia Designer crafting bold identities, motion, and social experiences that move people.</p>
+  <div class="hero-cta">
+    <a href="#reel" class="btn-primary">Watch My Reel</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-scroll-hint">Scroll to explore</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-eyebrow">About Me</div>
+  <div class="section-title">Who I Am</div>
+  <div class="about-grid">
+
+    <!-- Left: bio -->
+    <div>
+      <p class="about-bio">
+        I'm a <strong>Senior Multimedia Designer</strong> based in <strong>Buenos Aires, Argentina</strong>,
+        with over 8 years of experience crafting visual identities, motion graphics, and social media
+        campaigns for brands across Latin America and beyond.
+        <br><br>
+        I believe design should be felt, not just seen. My work lives at the intersection of
+        <strong>storytelling, motion, and visual strategy</strong> — turning ideas into experiences
+        that resonate.
+      </p>
+    </div>
+
+    <!-- Right: 2×2 grid of details + award card -->
+    <div class="about-sidebar">
+
+      <!-- 2×2 detail grid -->
+      <div class="detail-grid">
+        <div class="detail-cell" style="border-color: var(--coral);">
+          <div class="detail-label" style="color: var(--coral);">Based in</div>
+          <div class="detail-value">Buenos Aires</div>
+          <div class="detail-sub">Argentina</div>
+        </div>
+        <div class="detail-cell" style="border-color: var(--sky);">
+          <div class="detail-label" style="color: var(--sky);">Education</div>
+          <div class="detail-value">B.A. Graphic Design</div>
+          <div class="detail-sub">Universidad de Buenos Aires</div>
+        </div>
+        <div class="detail-cell" style="border-color: var(--violet);">
+          <div class="detail-label" style="color: var(--violet);">Specialties</div>
+          <div class="detail-value">Motion · Design</div>
+          <div class="detail-sub">Video · Social Media</div>
+        </div>
+        <div class="detail-cell" style="border-color: var(--muted);">
+          <div class="detail-label" style="color: var(--muted);">Tools</div>
+          <div class="detail-value">Ae · Pr · Ai · Ps</div>
+          <div class="detail-sub">Figma · Cinema 4D</div>
+        </div>
+      </div>
+
+      <!-- Award card — full width, with logo placeholder + link -->
+      <div class="award-card">
+        <div class="award-card-inner">
+          <!-- Logo placeholder -->
+          <div class="award-logo">
+            <div class="award-logo-placeholder">🏅</div>
+            <div class="award-logo-hint">Award<br>logo</div>
+          </div>
+          <!-- Content -->
+          <div class="award-content">
+            <div class="award-eyebrow">Award</div>
+            <div class="award-title">Best Motion Design<br>LATAM Design Awards 2023</div>
+            <div class="award-sub">Awarded for the Colores Agency brand campaign</div>
+            <a class="award-link" href="#" target="_blank" rel="noopener">View Award</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-eyebrow">Career</div>
+  <div class="section-title">Experience</div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div class="exp-period">2021 — Present</div>
+      <div>
+        <div class="exp-role">Senior Multimedia Designer</div>
+        <div class="exp-company">Studio Katz · Buenos Aires</div>
+        <div class="exp-desc">Leading visual identity and motion projects for brands across fashion, tech, and culture. Responsible for art direction, motion production, and social strategy.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-period">2018 — 2021</div>
+      <div>
+        <div class="exp-role">Motion Designer</div>
+        <div class="exp-company">Agencia Colores · Buenos Aires</div>
+        <div class="exp-desc">Produced motion graphics and video content for campaigns reaching 2M+ viewers. Collaborated with clients in FMCG and lifestyle brands across LATAM.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-period">2015 — 2018</div>
+      <div>
+        <div class="exp-role">Junior Graphic Designer</div>
+        <div class="exp-company">Freelance · Buenos Aires</div>
+        <div class="exp-desc">Built a client base in print, identity, and social media design while completing postgraduate studies in motion graphics.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REEL -->
+<section class="reel-section" id="reel">
+  <div class="reel-label">Showreel</div>
+  <div class="reel-heading">My <span>Reel</span></div>
+  <div class="reel-container">
+    <div class="reel-play-wrap">
+      <div class="reel-play-btn">▶</div>
+      <div class="reel-play-label">Watch Showreel</div>
+    </div>
+    <div class="reel-duration">2:34</div>
+  </div>
+</section>
+
+<!-- WORK: MOTION GRAPHICS -->
+<section class="work-section work-motion" id="motion">
+  <div class="section-eyebrow">Featured Work</div>
+  <div class="section-title">Motion Graphics<br>& Video Editing</div>
+  <div class="work-grid">
+    <div class="work-card" onclick="openModal()">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#FF6B6B33,#C77DFF33);">
+        <div class="card-play">▶</div>
+        <div class="card-thumb-count">⊞ 3 media</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Brand Identity Reel 2024</div>
+        <div class="card-desc">Full motion identity for a BA fashion label — logo animation, transitions, social templates.</div>
+        <div class="card-hover-hint">Click to view</div>
+      </div>
+    </div>
+    <div class="work-card" onclick="openModal()">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#6BCBEA22,#FFD93D33);">
+        <div class="card-play" style="background:rgba(107,203,234,0.85);">▶</div>
+        <div class="card-thumb-count">⊞ 2 media</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Social Campaign — 30s Ad</div>
+        <div class="card-desc">Animated spot for Instagram Stories and Reels for a seasonal collection.</div>
+        <div class="card-hover-hint">Click to view</div>
+      </div>
+    </div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+  </div>
+</section>
+
+<!-- WORK: GRAPHIC DESIGN -->
+<section class="work-section work-graphic" id="graphic">
+  <div class="section-eyebrow">Featured Work</div>
+  <div class="section-title">Graphic Design</div>
+  <div class="work-grid">
+    <div class="work-card" onclick="openModal()">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#6BCBEA33,#1a2f42);">
+        <div class="card-thumb-count">⊞ 5 media</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">Visual Identity System</div>
+        <div class="card-desc">Complete brand identity for a Buenos Aires restaurant — logo, typography, print collateral.</div>
+        <div class="card-hover-hint">Click to view</div>
+      </div>
+    </div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+  </div>
+</section>
+
+<!-- WORK: SOCIAL MEDIA -->
+<section class="work-section work-social" id="social">
+  <div class="section-eyebrow">Featured Work</div>
+  <div class="section-title">Social Media</div>
+  <div class="work-grid">
+    <div class="work-card" onclick="openModal()">
+      <div class="card-thumb" style="background:linear-gradient(135deg,#C77DFF33,#FF6B6B22);">
+        <div class="card-thumb-count">⊞ 4 media</div>
+      </div>
+      <div class="card-body">
+        <div class="card-title">@brandname — Feed Design</div>
+        <div class="card-desc">Full Instagram visual strategy: grid layout, stories templates, and highlight covers.</div>
+        <div class="card-hover-hint">Click to view</div>
+      </div>
+    </div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+    <div class="work-card placeholder"><div class="placeholder-plus">+</div><div class="placeholder-text">Add work piece</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-eyebrow">Get in Touch</div>
+  <div class="section-title">Contact</div>
+  <div class="contact-grid">
+    <div>
+      <p class="contact-intro">Interested in working together? I'm available for <strong>freelance projects</strong>, <strong>collaborations</strong>, and <strong>full-time opportunities</strong>.<br><br>Let's create something bold.</p>
+    </div>
+    <div class="contact-links">
+      <div class="contact-item">
+        <div class="contact-icon" style="background:#FF6B6B22;">📧</div>
+        <div><div class="contact-detail-label">Email</div><div class="contact-detail-value">sofia@example.com</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" style="background:#6BCBEA22;">💼</div>
+        <div><div class="contact-detail-label">LinkedIn</div><div class="contact-detail-value">linkedin.com/in/sofiagkatz</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" style="background:#C77DFF22;">📸</div>
+        <div><div class="contact-detail-label">Instagram</div><div class="contact-detail-value">@sofiagkatz</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon" style="background:#FFD93D22;">📍</div>
+        <div><div class="contact-detail-label">Location</div><div class="contact-detail-value">Buenos Aires, Argentina</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">SOFIA GARCIA KATZ<span>.</span></div>
+  <div class="footer-copy">© 2025 · Senior Multimedia Designer · Buenos Aires</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-slideshow">
+      <div class="slide active" style="background:linear-gradient(135deg,#FF6B6B33,#C77DFF33);">🎬</div>
+      <div class="slide" style="background:linear-gradient(135deg,#6BCBEA22,#FFD93D22);">🖼️</div>
+      <div class="slide" style="background:linear-gradient(135deg,#C77DFF22,#FF6B6B22);">✨</div>
+      <div class="slide-nav">
+        <button class="slide-btn" onclick="prevSlide()">‹</button>
+        <button class="slide-btn" onclick="nextSlide()">›</button>
+      </div>
+      <div class="slide-dots">
+        <div class="dot active" id="dot-0"></div>
+        <div class="dot" id="dot-1"></div>
+        <div class="dot" id="dot-2"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-title">Brand Identity Reel 2024</div>
+      <div class="modal-desc">Full motion identity system for a Buenos Aires fashion label — logo animation, transitions, and social templates. Produced entirely in After Effects with custom expressions.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 3;
+  function openModal() { document.getElementById('modalOverlay').classList.add('open'); currentSlide = 0; updateSlide(); }
+  function closeModal() { document.getElementById('modalOverlay').classList.remove('open'); }
+  function closeModalOutside(e) { if (e.target === document.getElementById('modalOverlay')) closeModal(); }
+  function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateSlide(); }
+  function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateSlide(); }
+  function updateSlide() {
+    document.querySelectorAll('.slide').forEach((s,i) => s.classList.toggle('active', i === currentSlide));
+    for (let i = 0; i < totalSlides; i++) document.getElementById('dot-'+i).classList.toggle('active', i === currentSlide);
+  }
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeModal(); if (e.key==='ArrowRight') nextSlide(); if (e.key==='ArrowLeft') prevSlide(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Portfolio — Layout Direction</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #111; color: #eee; padding: 40px 20px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+  .subtitle { color: #999; font-size: 15px; margin-bottom: 40px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+  .card { border-radius: 12px; overflow: hidden; background: #1a1a1a; border: 2px solid #2a2a2a; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+  .card:hover { transform: translateY(-4px); border-color: #FF6B6B; }
+  .card-preview { height: 280px; position: relative; overflow: hidden; }
+  .card-info { padding: 20px; }
+  .card-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #FFD93D; }
+  .card-info p { font-size: 13px; color: #999; line-height: 1.5; }
+  .label { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+  .tag { display: inline-block; font-size: 10px; background: #FF6B6B22; color: #FF6B6B; padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+
+  /* === LAYOUT A: Bold Hero + Single Page Scroll === */
+  .layout-a { background: #0D1B2A; display: flex; flex-direction: column; }
+  .la-hero { background: #0D1B2A; padding: 14px 16px 10px; border-bottom: 2px solid #FF6B6B; }
+  .la-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+  .la-logo { font-size: 9px; font-weight: 800; color: #FF6B6B; letter-spacing: 1px; }
+  .la-nav-links { display: flex; gap: 8px; }
+  .la-nav-links span { font-size: 7px; color: #6BCBEA; letter-spacing: 1px; text-transform: uppercase; }
+  .la-name { font-size: 22px; font-weight: 900; color: #fff; line-height: 1; }
+  .la-name em { color: #FFD93D; font-style: normal; }
+  .la-role { font-size: 8px; letter-spacing: 2px; color: #6BCBEA; text-transform: uppercase; margin-top: 4px; }
+  .la-sections { display: flex; flex-direction: column; gap: 4px; padding: 8px 16px; flex: 1; }
+  .la-section { padding: 6px 8px; background: #1a2a3a; border-left: 3px solid; border-radius: 0 4px 4px 0; }
+  .la-section-title { font-size: 7px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 3px; }
+  .la-grid { display: flex; gap: 4px; }
+  .la-thumb { height: 20px; border-radius: 3px; background: #2a3a4a; flex: 1; }
+
+  /* === LAYOUT B: Sidebar Nav + Content Area === */
+  .layout-b { background: #0D1B2A; display: flex; flex-direction: row; }
+  .lb-sidebar { width: 60px; background: #060e17; display: flex; flex-direction: column; padding: 10px 6px; gap: 6px; border-right: 2px solid #FF6B6B; }
+  .lb-logo-dot { width: 28px; height: 28px; border-radius: 50%; background: #FF6B6B; margin: 0 auto 8px; display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 900; color: #fff; }
+  .lb-nav-item { font-size: 6px; color: #6BCBEA; text-transform: uppercase; letter-spacing: 1px; text-align: center; padding: 4px 2px; cursor: pointer; border-radius: 4px; }
+  .lb-nav-item.active { background: #FF6B6B22; color: #FF6B6B; }
+  .lb-content { flex: 1; padding: 12px; overflow: hidden; }
+  .lb-hero { margin-bottom: 8px; }
+  .lb-name { font-size: 16px; font-weight: 900; color: #fff; line-height: 1.1; }
+  .lb-name em { color: #FFD93D; font-style: normal; }
+  .lb-role { font-size: 7px; color: #6BCBEA; letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+  .lb-divider { height: 2px; background: linear-gradient(90deg, #FF6B6B, #C77DFF); margin: 8px 0; }
+  .lb-section-label { font-size: 7px; font-weight: 700; color: #FFD93D; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .lb-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+  .lb-thumb { height: 30px; background: #1a2a3a; border-radius: 3px; }
+  .lb-thumb.accent { background: #FF6B6B33; }
+
+  /* === LAYOUT C: Magazine / Editorial === */
+  .layout-c { background: #0D1B2A; }
+  .lc-header { display: flex; justify-content: space-between; align-items: flex-end; padding: 10px 14px 8px; border-bottom: 1px solid #1e3048; }
+  .lc-name-block {}
+  .lc-label { font-size: 7px; color: #6BCBEA; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
+  .lc-name { font-size: 18px; font-weight: 900; color: #fff; }
+  .lc-name em { color: #FF6B6B; font-style: normal; }
+  .lc-nav { display: flex; gap: 10px; }
+  .lc-nav-item { font-size: 7px; color: #999; letter-spacing: 1px; text-transform: uppercase; }
+  .lc-nav-item.highlight { color: #FFD93D; border-bottom: 1px solid #FFD93D; padding-bottom: 1px; }
+  .lc-hero-strip { height: 60px; background: linear-gradient(135deg, #FF6B6B 0%, #C77DFF 50%, #6BCBEA 100%); position: relative; display: flex; align-items: flex-end; padding: 8px 14px; }
+  .lc-hero-tag { font-size: 7px; font-weight: 700; color: #fff; letter-spacing: 2px; text-transform: uppercase; background: #0D1B2A; padding: 2px 8px; border-radius: 2px; }
+  .lc-body { display: grid; grid-template-columns: 2fr 1fr; gap: 0; }
+  .lc-main { padding: 10px 14px; border-right: 1px solid #1e3048; }
+  .lc-section-title { font-size: 7px; font-weight: 700; color: #FFD93D; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
+  .lc-big-thumb { height: 50px; background: #1a2a3a; border-radius: 3px; margin-bottom: 6px; }
+  .lc-small-thumbs { display: flex; gap: 4px; }
+  .lc-small-thumb { flex: 1; height: 28px; background: #1a2a3a; border-radius: 3px; }
+  .lc-small-thumb.a1 { background: #FF6B6B33; }
+  .lc-aside { padding: 10px 12px; display: flex; flex-direction: column; gap: 6px; }
+  .lc-aside-block { background: #1a2a3a; border-radius: 3px; padding: 6px; border-left: 2px solid #C77DFF; }
+  .lc-aside-label { font-size: 7px; color: #C77DFF; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+  .lc-aside-line { height: 5px; background: #2a3a4a; border-radius: 2px; margin-bottom: 2px; }
+  .lc-aside-line.short { width: 60%; }
+</style>
+</head>
+<body>
+<h1>Layout Direction</h1>
+<p class="subtitle">How should the portfolio be structured? All options use the Buenos Aires Nights palette.</p>
+
+<div class="cards">
+
+  <!-- Layout A -->
+  <div class="card">
+    <div class="card-preview">
+      <div class="layout-a" style="height:100%;">
+        <div class="la-hero">
+          <div class="la-nav">
+            <div class="la-logo">SGK</div>
+            <div class="la-nav-links">
+              <span>About</span><span>Work</span><span>Contact</span>
+            </div>
+          </div>
+          <div class="la-name">SOFIA<br><em>GARCIA</em><br>KATZ</div>
+          <div class="la-role">Senior Multimedia Designer · Buenos Aires</div>
+        </div>
+        <div class="la-sections">
+          <div class="la-section" style="border-color:#FF6B6B;">
+            <div class="la-section-title" style="color:#FF6B6B;">Motion Graphics</div>
+            <div class="la-grid">
+              <div class="la-thumb" style="background:#FF6B6B33;"></div>
+              <div class="la-thumb"></div><div class="la-thumb"></div>
+            </div>
+          </div>
+          <div class="la-section" style="border-color:#6BCBEA;">
+            <div class="la-section-title" style="color:#6BCBEA;">Graphic Design</div>
+            <div class="la-grid">
+              <div class="la-thumb" style="background:#6BCBEA33;"></div>
+              <div class="la-thumb"></div><div class="la-thumb"></div>
+            </div>
+          </div>
+          <div class="la-section" style="border-color:#C77DFF;">
+            <div class="la-section-title" style="color:#C77DFF;">Social Media</div>
+            <div class="la-grid">
+              <div class="la-thumb" style="background:#C77DFF33;"></div>
+              <div class="la-thumb"></div><div class="la-thumb"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option A</span> <span class="tag">Recommended</span>
+      <h3>Bold Hero + Single Page Scroll</h3>
+      <p>One long page: full-screen hero with your name big and bold, then sections flow down. Navigation anchors jump to each section. This is the classic portfolio format — works great on both screen and PDF export. Very easy to share as a GitHub Pages link.</p>
+    </div>
+  </div>
+
+  <!-- Layout B -->
+  <div class="card">
+    <div class="card-preview">
+      <div class="layout-b" style="height:100%;">
+        <div class="lb-sidebar">
+          <div class="lb-logo-dot">S</div>
+          <div class="lb-nav-item active">About</div>
+          <div class="lb-nav-item">Motion</div>
+          <div class="lb-nav-item">Design</div>
+          <div class="lb-nav-item">Social</div>
+          <div class="lb-nav-item">Contact</div>
+        </div>
+        <div class="lb-content">
+          <div class="lb-hero">
+            <div class="lb-name">SOFIA <em>GARCIA</em> KATZ</div>
+            <div class="lb-role">Senior Multimedia Designer</div>
+          </div>
+          <div class="lb-divider"></div>
+          <div class="lb-section-label">Motion Graphics</div>
+          <div class="lb-grid">
+            <div class="lb-thumb accent"></div>
+            <div class="lb-thumb"></div>
+            <div class="lb-thumb"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option B</span>
+      <h3>Fixed Sidebar Navigation</h3>
+      <p>A persistent left sidebar with your initials and section links. Content scrolls on the right. Feels more like an app than a webpage — sleek and professional. Slightly harder to export as PDF since the sidebar adds complexity.</p>
+    </div>
+  </div>
+
+  <!-- Layout C -->
+  <div class="card">
+    <div class="card-preview">
+      <div class="layout-c" style="height:100%;">
+        <div class="lc-header">
+          <div class="lc-name-block">
+            <div class="lc-label">Portfolio</div>
+            <div class="lc-name">SOFIA <em>GARCIA</em> KATZ</div>
+          </div>
+          <div class="lc-nav">
+            <div class="lc-nav-item">About</div>
+            <div class="lc-nav-item highlight">Work</div>
+            <div class="lc-nav-item">Contact</div>
+          </div>
+        </div>
+        <div class="lc-hero-strip">
+          <div class="lc-hero-tag">Senior Multimedia Designer · Buenos Aires</div>
+        </div>
+        <div class="lc-body">
+          <div class="lc-main">
+            <div class="lc-section-title">Motion Graphics / Video</div>
+            <div class="lc-big-thumb"></div>
+            <div class="lc-small-thumbs">
+              <div class="lc-small-thumb a1"></div>
+              <div class="lc-small-thumb"></div>
+              <div class="lc-small-thumb"></div>
+            </div>
+          </div>
+          <div class="lc-aside">
+            <div class="lc-aside-block">
+              <div class="lc-aside-label">Graphic Design</div>
+              <div class="lc-aside-line"></div>
+              <div class="lc-aside-line short"></div>
+            </div>
+            <div class="lc-aside-block" style="border-color:#FFD93D;">
+              <div class="lc-aside-label" style="color:#FFD93D;">Social Media</div>
+              <div class="lc-aside-line"></div>
+              <div class="lc-aside-line short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option C</span>
+      <h3>Magazine / Editorial Layout</h3>
+      <p>Header with name + nav, a bold color-band hero, then an editorial grid where the featured work section is large on the left and two other sections preview on the right. Very magazine-like and creative — but harder to navigate and trickier to keep editable.</p>
+    </div>
+  </div>
+
+</div>
+
+<p style="color:#555; font-size:13px; margin-top:32px;">Tell me which layout feels right — or if you want something different entirely.</p>
+</body>
+</html>

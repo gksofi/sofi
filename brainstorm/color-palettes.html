@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sofia Portfolio — Color Direction</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #111; color: #eee; padding: 40px 20px; min-height: 100vh; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+  .subtitle { color: #999; font-size: 15px; margin-bottom: 40px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+  .card { border-radius: 12px; overflow: hidden; background: #1a1a1a; border: 2px solid #2a2a2a; cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+  .card:hover { transform: translateY(-4px); border-color: #555; }
+  .card-preview { padding: 24px; height: 200px; display: flex; flex-direction: column; gap: 10px; }
+  .swatches { display: flex; gap: 8px; margin-bottom: 4px; }
+  .swatch { width: 36px; height: 36px; border-radius: 50%; }
+  .mock-name { font-weight: 800; font-size: 12px; letter-spacing: 1px; padding: 5px 12px; width: fit-content; }
+  .mock-title { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
+  .mock-divider { height: 2px; margin: 2px 0; }
+  .mock-bars { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+  .mock-bar { display: flex; gap: 6px; }
+  .mock-bar div { height: 20px; border-radius: 3px; }
+  .card-info { padding: 20px; }
+  .card-info h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .card-info p { font-size: 13px; color: #999; line-height: 1.5; }
+  .label { display: inline-block; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<h1>Color Direction for Sofia's Portfolio</h1>
+<p class="subtitle">Pick the palette that feels most like you — colorful, bold, but still professional</p>
+
+<div class="cards">
+
+  <!-- A: Buenos Aires Nights -->
+  <div class="card">
+    <div class="card-preview" style="background: #0D1B2A;">
+      <div class="swatches">
+        <div class="swatch" style="background:#FF6B6B;"></div>
+        <div class="swatch" style="background:#FFD93D;"></div>
+        <div class="swatch" style="background:#6BCBEA;"></div>
+        <div class="swatch" style="background:#C77DFF;"></div>
+        <div class="swatch" style="background:#0D1B2A; border:2px solid #333;"></div>
+      </div>
+      <div class="mock-name" style="background:#FF6B6B; color:#fff; border-radius:20px;">SOFIA GARCIA KATZ</div>
+      <div class="mock-title" style="color:#FFD93D;">Senior Multimedia Designer</div>
+      <div class="mock-divider" style="background:#1e3048;"></div>
+      <div class="mock-bars">
+        <div class="mock-bar"><div style="flex:1;background:#6BCBEA;opacity:.7;"></div><div style="flex:2;background:#1a2a3a;"></div></div>
+        <div class="mock-bar"><div style="flex:1;background:#C77DFF;opacity:.6;"></div><div style="flex:3;background:#1a2a3a;"></div></div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option A</span>
+      <h3>Buenos Aires Nights</h3>
+      <p>Deep navy base with coral red, golden yellow, sky blue, and violet. Warm and vibrant — like Buenos Aires' creative nightlife. Multiple pops of color used intentionally.</p>
+    </div>
+  </div>
+
+  <!-- B: Digital Studio -->
+  <div class="card">
+    <div class="card-preview" style="background:#FAFAFA;">
+      <div class="swatches">
+        <div class="swatch" style="background:#FF2D78;"></div>
+        <div class="swatch" style="background:#7B2FFF;"></div>
+        <div class="swatch" style="background:#00D9C0;"></div>
+        <div class="swatch" style="background:#FFB800;"></div>
+        <div class="swatch" style="background:#111;"></div>
+      </div>
+      <div class="mock-name" style="background:linear-gradient(90deg,#FF2D78,#7B2FFF); color:#fff; border-radius:4px;">SOFIA GARCIA KATZ</div>
+      <div class="mock-title" style="color:#7B2FFF;">Senior Multimedia Designer</div>
+      <div class="mock-divider" style="background:linear-gradient(90deg,#FF2D78,#7B2FFF,#00D9C0); height:3px;"></div>
+      <div class="mock-bars">
+        <div class="mock-bar"><div style="flex:1;background:#FF2D78;opacity:.15;"></div><div style="flex:2;background:#eee;"></div></div>
+        <div class="mock-bar"><div style="flex:1;background:#00D9C0;opacity:.3;"></div><div style="flex:3;background:#eee;"></div></div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option B</span>
+      <h3>Digital Studio</h3>
+      <p>Clean white base with a bold magenta-to-purple gradient as the signature, plus teal and amber accents. Very digital, contemporary, energetic — the "tech meets creative" sweet spot.</p>
+    </div>
+  </div>
+
+  <!-- C: Warm Pop Studio -->
+  <div class="card">
+    <div class="card-preview" style="background:#FFF8F0;">
+      <div class="swatches">
+        <div class="swatch" style="background:#E8472A;"></div>
+        <div class="swatch" style="background:#F5A623;"></div>
+        <div class="swatch" style="background:#2ECC71;"></div>
+        <div class="swatch" style="background:#1A1A2E;"></div>
+        <div class="swatch" style="background:#FFF8F0;border:2px solid #ddd;"></div>
+      </div>
+      <div class="mock-name" style="background:#1A1A2E; color:#F5A623; letter-spacing:2px;">SOFIA GARCIA KATZ</div>
+      <div class="mock-title" style="color:#E8472A;">Senior Multimedia Designer</div>
+      <div class="mock-divider" style="background:#E8472A; width:60px; height:3px;"></div>
+      <div class="mock-bars">
+        <div class="mock-bar"><div style="flex:1;background:#F5A623;opacity:.3;"></div><div style="flex:2;background:#eeddd0;"></div></div>
+        <div class="mock-bar"><div style="flex:1;background:#2ECC71;opacity:.3;"></div><div style="flex:3;background:#eeddd0;"></div></div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option C</span>
+      <h3>Warm Pop Studio</h3>
+      <p>Warm cream background with bold tomato red, amber orange, and bright green — anchored by near-black type. Editorial print meets contemporary design. Playful but with weight.</p>
+    </div>
+  </div>
+
+  <!-- D: Candy & Dark -->
+  <div class="card">
+    <div class="card-preview" style="background:#F0F0FF;">
+      <div class="swatches">
+        <div class="swatch" style="background:#FF6EC7;"></div>
+        <div class="swatch" style="background:#FFE566;"></div>
+        <div class="swatch" style="background:#66E5FF;"></div>
+        <div class="swatch" style="background:#FF9B66;"></div>
+        <div class="swatch" style="background:#2C2C54;"></div>
+      </div>
+      <div class="mock-name" style="background:#2C2C54; color:#FFE566; border-radius:2px; letter-spacing:2px;">SOFIA GARCIA KATZ</div>
+      <div class="mock-title" style="color:#FF6EC7;">Senior Multimedia Designer</div>
+      <div class="mock-divider" style="background:linear-gradient(90deg,#FF6EC7,#FFE566,#66E5FF,#FF9B66); height:3px;"></div>
+      <div class="mock-bars">
+        <div class="mock-bar"><div style="flex:1;background:#FF6EC7;opacity:.25;"></div><div style="flex:2;background:#dde0ff;"></div></div>
+        <div class="mock-bar"><div style="flex:1;background:#66E5FF;opacity:.4;"></div><div style="flex:3;background:#dde0ff;"></div></div>
+      </div>
+    </div>
+    <div class="card-info">
+      <span class="label">Option D</span>
+      <h3>Candy &amp; Dark</h3>
+      <p>Soft lavender-white base with candy pink, sky blue, sunshine yellow, and peach — anchored by deep navy-purple for type. Playful and youthful without feeling immature.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
