@@ -824,6 +824,133 @@ function renderWorkSections() {
   });
 }
 
+/* ── Modal ─────────────────────────────────── */
+let _modalPieces = [];
+let _modalSlide  = 0;
+
+function openModal(sectionKey, pieceIndex) {
+  const piece     = PORTFOLIO_DATA.work[sectionKey].pieces[pieceIndex];
+  _modalPieces    = piece.media || [];
+  _modalSlide     = 0;
+
+  document.getElementById('modal-title').textContent = piece.title;
+  document.getElementById('modal-desc').textContent  = piece.description;
+
+  // Build dots
+  const dotsEl = document.getElementById('modal-dots');
+  dotsEl.innerHTML = _modalPieces.map((_, i) =>
+    `<div class="dot${i === 0 ? ' active' : ''}" onclick="goToSlide(${i})"></div>`
+  ).join('');
+
+  // Hide nav arrows when only 1 slide
+  document.querySelector('.slide-nav').style.display =
+    _modalPieces.length > 1 ? 'flex' : 'none';
+
+  _renderSlide(0);
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.getElementById('modal-slide-content').innerHTML = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+function goToSlide(n) {
+  _modalSlide = (n + _modalPieces.length) % _modalPieces.length;
+  _renderSlide(_modalSlide);
+  document.querySelectorAll('#modal-dots .dot').forEach((dot, i) =>
+    dot.classList.toggle('active', i === _modalSlide)
+  );
+}
+
+function nextSlide() {
+  if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+  goToSlide(_modalSlide + 1);
+}
+
+function prevSlide() {
+  if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+  goToSlide(_modalSlide - 1);
+}
+
+function _renderSlide(n) {
+  const media   = _modalPieces[n];
+  const content = document.getElementById('modal-slide-content');
+  if (!media) { content.innerHTML = ''; return; }
+
+  if (media.type === 'image') {
+    content.innerHTML = `<img src="${media.src}" alt=""
+      style="width:100%;height:100%;object-fit:contain;">`;
+    return;
+  }
+
+  // video type
+  const embed = getEmbedInfo(media.src);
+  if (!embed) { content.innerHTML = ''; return; }
+
+  if (embed.type === 'iframe') {
+    content.innerHTML = `<iframe src="${embed.url}"
+      style="width:100%;height:100%;border:none;"
+      allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
+  } else {
+    content.innerHTML = `<video src="${embed.url}" controls
+      style="width:100%;height:100%;max-height:420px;background:#000;"></video>`;
+  }
+}
+
+function renderContact() {
+  const c = PORTFOLIO_DATA.contact;
+  document.getElementById('contact').innerHTML = `
+    <div class="section-eyebrow">Get in Touch</div>
+    <div class="section-title">Contact</div>
+    <div class="contact-grid">
+      <p class="contact-intro">${c.intro}</p>
+      <div class="contact-links">
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#FF6B6B22;">📧</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <a class="contact-detail-value" href="${c.email.url}">${c.email.label}</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#6BCBEA22;">💼</div>
+          <div>
+            <div class="contact-detail-label">LinkedIn</div>
+            <a class="contact-detail-value" href="${c.linkedin.url}" target="_blank" rel="noopener">${c.linkedin.label}</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#C77DFF22;">📸</div>
+          <div>
+            <div class="contact-detail-label">Instagram</div>
+            <a class="contact-detail-value" href="${c.instagram.url}" target="_blank" rel="noopener">${c.instagram.label}</a>
+          </div>
+        </div>
+        <div class="contact-item" style="border-bottom:none;">
+          <div class="contact-icon" style="background:#FFD93D22;">📍</div>
+          <div>
+            <div class="contact-detail-label">Location</div>
+            <div class="contact-detail-value">${c.location}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderFooter() {
+  const d = PORTFOLIO_DATA;
+  document.getElementById('footer').innerHTML = `
+    <div class="footer-name">${d.name.first} ${d.name.middle} ${d.name.last}<span>.</span></div>
+    <div class="footer-copy">© ${new Date().getFullYear()} · ${d.role} · ${d.location}</div>
+  `;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderHero();
@@ -831,7 +958,8 @@ document.addEventListener('DOMContentLoaded', () => {
   renderExperience();
   renderReel();
   renderWorkSections();
-  // renderContact(), renderFooter() added in Task 4
+  renderContact();
+  renderFooter();
 });
 
 document.addEventListener('keydown', e => {
