@@ -170,6 +170,17 @@ Put your image and video files in the correct subfolder:
 
 ## Contact Details
 
+The `intro` field is the paragraph shown on the left side of the contact section. HTML is allowed — use `<strong>` for bold and `<br><br>` for paragraph breaks.
+
+```js
+contact: {
+  intro: 'Interested in working together? I\'m available for <strong>freelance projects</strong>...',
+  ...
+}
+```
+
+Change it to whatever intro message you'd like to show.
+
 ```js
 contact: {
   email:    { label: 'sofia@example.com',          url: 'mailto:sofia@example.com' },
