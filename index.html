@@ -724,12 +724,114 @@ function renderExperience() {
   `;
 }
 
+/* ── Detect video embed type ───────────────── */
+function getEmbedInfo(src) {
+  if (!src) return null;
+  if (/youtube\.com\/watch\?v=/.test(src)) {
+    const id = new URL(src).searchParams.get('v');
+    return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
+  }
+  if (/youtu\.be\//.test(src)) {
+    const id = src.split('youtu.be/')[1].split('?')[0];
+    return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
+  }
+  if (/vimeo\.com\/(\d+)/.test(src)) {
+    const id = src.match(/vimeo\.com\/(\d+)/)[1];
+    return { type: 'iframe', url: `https://player.vimeo.com/video/${id}` };
+  }
+  return { type: 'video', url: src };
+}
+
+function renderReel() {
+  const reel = PORTFOLIO_DATA.reel;
+  const embed = getEmbedInfo(reel.src);
+  let playerHtml;
+
+  if (!embed) {
+    playerHtml = `
+      <div class="reel-play-wrap">
+        <div class="reel-play-btn">▶</div>
+        <div class="reel-play-label">Watch Showreel</div>
+      </div>`;
+  } else if (embed.type === 'iframe') {
+    playerHtml = `<iframe src="${embed.url}" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
+  } else {
+    playerHtml = `<video src="${embed.url}" controls style="width:100%;height:100%;"></video>`;
+  }
+
+  const durationHtml = reel.duration
+    ? `<div class="reel-duration">${reel.duration}</div>` : '';
+
+  document.getElementById('reel').innerHTML = `
+    <div class="section-eyebrow">Showreel</div>
+    <div class="reel-heading">My <span>Reel</span></div>
+    <div class="reel-container">
+      ${playerHtml}
+      ${durationHtml}
+    </div>
+  `;
+}
+
+function renderWorkSections() {
+  const sections = [
+    { key: 'motion',  id: 'motion',  data: PORTFOLIO_DATA.work.motion },
+    { key: 'graphic', id: 'graphic', data: PORTFOLIO_DATA.work.graphic },
+    { key: 'social',  id: 'social',  data: PORTFOLIO_DATA.work.social },
+  ];
+
+  const MIN_CELLS = 6;
+
+  sections.forEach(({ key, id, data }) => {
+    const pieces = data.pieces;
+
+    const cardHtml = pieces.map((piece, i) => {
+      const firstMedia = piece.media && piece.media[0];
+      const isVideo    = firstMedia && firstMedia.type === 'video';
+      const thumbSrc   = piece.thumbnail || (firstMedia ? firstMedia.src : '');
+      const thumbStyle = thumbSrc
+        ? `background-image:url('${thumbSrc}');background-size:cover;background-position:center;`
+        : '';
+      const count = piece.media ? piece.media.length : 0;
+
+      return `
+        <div class="work-card" onclick="openModal('${key}', ${i})">
+          <div class="card-thumb" style="${thumbStyle}">
+            ${isVideo ? '<div class="card-play">▶</div>' : ''}
+            ${count > 0 ? `<div class="card-thumb-count">⊞ ${count} media</div>` : ''}
+          </div>
+          <div class="card-body">
+            <div class="card-title">${piece.title}</div>
+            <div class="card-desc">${piece.description}</div>
+            <div class="card-hover-hint">Click to view</div>
+          </div>
+        </div>`;
+    }).join('');
+
+    const placeholderCount = Math.max(0, MIN_CELLS - pieces.length);
+    const placeholderHtml  = Array(placeholderCount).fill(`
+      <div class="work-card placeholder">
+        <div class="placeholder-plus">+</div>
+        <div class="placeholder-text">Add work piece</div>
+      </div>`).join('');
+
+    const titleHtml = data.sectionTitle.replace('\n', '<br>');
+
+    document.getElementById(id).innerHTML = `
+      <div class="section-eyebrow">Featured Work</div>
+      <div class="section-title">${titleHtml}</div>
+      <div class="work-grid">${cardHtml}${placeholderHtml}</div>
+    `;
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderHero();
   renderAbout();
   renderExperience();
-  // renderReel(), renderWorkSections(), renderContact(), renderFooter() added in Tasks 3–4
+  renderReel();
+  renderWorkSections();
+  // renderContact(), renderFooter() added in Task 4
 });
 
 document.addEventListener('keydown', e => {
