@@ -614,6 +614,130 @@ const PORTFOLIO_DATA = {
    RENDER FUNCTIONS — do not edit below this line
 ═══════════════════════════════════════════════════════════════ */
 
+function renderNav() {
+  const d = PORTFOLIO_DATA;
+  const initials = d.name.first[0] + d.name.middle[0] + d.name.last[0];
+  document.getElementById('nav').innerHTML = `
+    <div class="nav-logo">${initials}<span>.</span></div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#reel">Reel</a>
+      <a href="#motion">Motion</a>
+      <a href="#graphic">Graphic Design</a>
+      <a href="#social">Social Media</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  `;
+}
+
+function renderHero() {
+  const d = PORTFOLIO_DATA;
+  document.getElementById('hero').innerHTML = `
+    <div class="hero-bg-accent"></div>
+    <div class="hero-bg-accent2"></div>
+    <div class="hero-eyebrow">${d.location}</div>
+    <div class="hero-name">
+      ${d.name.first}<br>
+      <span class="accent-coral">${d.name.middle}</span><br>
+      <span class="accent-yellow">${d.name.last}</span>
+    </div>
+    <p class="hero-tagline">${d.tagline}</p>
+    <div class="hero-cta">
+      <a href="#reel" class="btn-primary">Watch My Reel</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+    <div class="hero-scroll-hint">Scroll to explore</div>
+  `;
+}
+
+function renderAbout() {
+  const d = PORTFOLIO_DATA;
+  const det = d.about.details;
+  const aw  = d.about.award;
+
+  const logoHtml = aw.logo
+    ? `<img src="${aw.logo}" alt="Award logo" style="width:52px;height:52px;object-fit:contain;border-radius:4px;">`
+    : `<div class="award-logo-placeholder">🏅</div><div class="award-logo-hint">Award<br>logo</div>`;
+
+  document.getElementById('about').innerHTML = `
+    <div class="section-eyebrow">About Me</div>
+    <div class="section-title">Who I Am</div>
+    <div class="about-grid">
+      <div class="about-bio">${d.about.bio}</div>
+      <div class="about-sidebar">
+        <div class="detail-grid">
+          <div class="detail-cell" style="border-top-color:var(--coral)">
+            <div class="detail-label" style="color:var(--coral)">Based in</div>
+            <div class="detail-value">${det.basedIn.value}</div>
+            <div class="detail-sub">${det.basedIn.sub}</div>
+          </div>
+          <div class="detail-cell" style="border-top-color:var(--sky)">
+            <div class="detail-label" style="color:var(--sky)">Education</div>
+            <div class="detail-value">${det.education.value}</div>
+            <div class="detail-sub">${det.education.sub}</div>
+          </div>
+          <div class="detail-cell" style="border-top-color:var(--violet)">
+            <div class="detail-label" style="color:var(--violet)">Specialties</div>
+            <div class="detail-value">${det.specialties.value}</div>
+            <div class="detail-sub">${det.specialties.sub}</div>
+          </div>
+          <div class="detail-cell" style="border-top-color:var(--muted)">
+            <div class="detail-label" style="color:var(--muted)">Tools</div>
+            <div class="detail-value">${det.tools.value}</div>
+            <div class="detail-sub">${det.tools.sub}</div>
+          </div>
+        </div>
+        <div class="award-card">
+          <div class="award-card-inner">
+            <div class="award-logo">${logoHtml}</div>
+            <div class="award-content">
+              <div class="award-eyebrow">Award</div>
+              <div class="award-title">${aw.title}</div>
+              <div class="award-sub">${aw.subtitle}</div>
+              <a class="award-link" href="${aw.url}" target="_blank" rel="noopener">View Award</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderExperience() {
+  const d = PORTFOLIO_DATA;
+  const items = d.experience.map((e, i) => `
+    <div class="exp-item" ${i === d.experience.length - 1 ? 'style="border-bottom:none"' : ''}>
+      <div class="exp-period">${e.period}</div>
+      <div>
+        <div class="exp-role">${e.role}</div>
+        <div class="exp-company">${e.company}</div>
+        <div class="exp-desc">${e.description}</div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('experience').innerHTML = `
+    <div class="section-eyebrow">Career</div>
+    <div class="section-title">Experience</div>
+    <div class="exp-list">${items}</div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderNav();
+  renderHero();
+  renderAbout();
+  renderExperience();
+  // renderReel(), renderWorkSections(), renderContact(), renderFooter() added in Tasks 3–4
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape')      closeModal();
+  if (e.key === 'ArrowRight')  nextSlide();
+  if (e.key === 'ArrowLeft')   prevSlide();
+});
+
 </script>
 </body>
 </html>
