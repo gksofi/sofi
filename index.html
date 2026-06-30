@@ -327,22 +327,9 @@
         gap: 8px;
         padding: 20px 10px;
       }
-      .award-logo-placeholder {
-        width: 52px;
-        height: 52px;
-        border-radius: 8px;
-        border: 2px dashed rgba(255, 217, 61, 0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-      }
-      .award-logo-hint {
-        font-size: 9px;
-        text-align: center;
-        color: rgba(255, 217, 61, 0.4);
-        letter-spacing: 0.5px;
-        line-height: 1.4;
+      .award-trophy {
+        font-size: 48px;
+        line-height: 1;
       }
       .award-content {
         flex: 1;
@@ -360,8 +347,7 @@
         gap: 8px;
       }
       .award-eyebrow::before {
-        content: "🏆";
-        font-size: 13px;
+        display: none;
       }
       .award-title {
         font-family: "Space Grotesk", sans-serif;
@@ -1027,66 +1013,79 @@
       ═══════════════════════════════════════════════════════════════ */
       const PORTFOLIO_DATA = {
         // Your name — shown in nav, hero, footer
-        name: { first: 'Sofia', middle: 'Garcia', last: 'Katz' },
+        name: { first: "Sofia", middle: "Garcia", last: "Katz" },
         // Your job title
-        role: 'Senior Multimedia Designer',
+        role: "Senior Multimedia Designer",
         // Your city — shown in hero eyebrow and footer
-        location: 'Buenos Aires, Argentina',
+        location: "Buenos Aires, Argentina",
         // One-line tagline shown under your name in the hero
-        tagline: 'Senior Multimedia Designer crafting bold identities, motion, and social experiences that move people.',
+        tagline:
+          "Senior Multimedia Designer crafting bold identities, motion, and social experiences that move people.",
 
         about: {
           // Your bio — HTML allowed (use <strong> for bold, <br> for line breaks)
-          bio: 'I am a multimedia designer based in Argentina, specialized in motion graphics with 6 years of experience bringing brands, stories, and ideas to life through movement. My background spans across industries, from 3D for video games and VFX for TV productions, to motion graphics for advertising campaigns and social media. My process starts with a question and ends with something that surprises even me. I thrive in creative teams where ideas collide and evolve, and I bring that same energy to every frame I design.',
+          bio: "I am a multimedia designer based in Argentina, specialized in motion graphics with 6 years of experience bringing brands, stories, and ideas to life through movement.<br><br> My background spans across industries, from 3D for video games and VFX for TV productions, to motion graphics for advertising campaigns and social media.<br><br> My process starts with a question and ends with something that surprises even me. I thrive in creative teams where ideas collide and evolve, and I bring that same energy to every frame I design.",
 
           details: {
-            basedIn:    { value: 'Buenos Aires',        sub: 'Argentina' },
-            education:  { value: 'Multimedia Designer', sub: 'Escuela Da Vinci' },
-            specialties:{ value: 'Motion · Design',     sub: 'Video · Social Media' },
-            tools:      { value: 'Ae · Pr · Ai · Ps',  sub: 'Figma · Cinema 4D' },
+            basedIn: { value: "Buenos Aires", sub: "Argentina" },
+            education: {
+              value: "Multimedia Designer",
+              sub: "Escuela Da Vinci",
+            },
+            specialties: {
+              value: "Motion · Design",
+              sub: "Video · Social Media",
+            },
+            tools: { value: "Ae · Pr · Ai · Ps", sub: "Figma · Cinema 4D" },
           },
 
           award: {
             // Path to award logo image, e.g. 'media/award-logo.png'. Leave '' for placeholder icon.
-            logo: '',
-            title: 'Creative LIAisons Argentina 2025',
-            subtitle: 'First place with te campaign <i>Preguntas Reales </i> for Faro Digital ',
+            logo: "",
+            title: "Creative LIAisons Argentina 2025",
+            subtitle:
+              "First place with te campaign <i>Preguntas Reales </i> for Faro Digital ",
             // Full URL to the award page — opens in new tab
-            url: '#',  // Replace with the actual URL to the award page
+            url: "https://creatividadargentina.org/tuvimos-nuestras-creative-liaisons-argentina-2025-organizadas-junto-a-lia-awards/", // Replace with the actual URL to the award page
           },
         },
 
         // Work history — add or remove entries as needed
         experience: [
           {
-            period: '2025 — Present',
-            role: 'Senior Multimedia Designer',
-            company: 'El Observasdor · Buenos Aires',
-            description: 'lead the ideation and production of video formats — handling everything from concept and editing to design, motion graphics, and AI-integrated workflows. My work shapes how the brand communicates across digital platforms, blending journalistic clarity with creative ambition.',
+            period: "2025 — Present",
+            role: "Senior Multimedia Designer",
+            company: "El Observasdor · Buenos Aires",
+            description:
+              "Lead the ideation and production of video formats — handling everything from concept and editing to design, motion graphics, and AI-integrated workflows. My work shapes how the brand communicates across digital platforms, blending journalistic clarity with creative ambition.",
           },
           {
-            period: '2023 — 2024',
-            role: 'Senior Multimedia Designer',
-            company: 'La Nacion · Buenos Aires',
-            description: 'Tasked with reimagining how one of Argentina's most iconic media brands communicates visually. At La Nación, I led the creative development of new content formats, designed motion graphics, and pioneered augmented reality projects that pushed the outlet beyond conventional storytelling. A role defined by creative ambition and a mandate to innovate.',
+            period: "2023 — 2024",
+            role: "Senior Multimedia Designer",
+            company: "La Nacion · Buenos Aires",
+            description:
+              "Tasked with reimagining how one of Argentina's most iconic media brands communicates visually. At La Nación, I led the creative development of new content formats, designed motion graphics, and pioneered augmented reality projects that pushed the outlet beyond conventional storytelling. A role defined by creative ambition and a mandate to innovate.",
           },
           {
-            period: '2023 — 2023',
-            role: '3d Generalist',
-            company: 'Olive World · Buenos Aires',
-            description: 'As 3D Generalist on Olive, I owned the complete asset creation pipeline, designing, modeling and texturing 3D elements that brought the game's world to life. Beyond technical execution, I contributed to shaping the overall art direction, ensuring every asset felt intentional and consistent with the game's visual language.',
+            period: "2023 — 2023",
+            role: "3d Generalist",
+            company: "Olive World · Buenos Aires",
+            description:
+              "As 3D Generalist on Olive, I owned the complete asset creation pipeline, designing, modeling and texturing 3D elements that brought the game's world to life. Beyond technical execution, I contributed to shaping the overall art direction, ensuring every asset felt intentional and consistent with the game's visual language.",
           },
           {
-            period: '2022 — 2022',
-            role: 'VFX Coordinator',
-            company: 'LASP · Buenos Aires',
-            description: 'Helped bring a Disney production to life from Argentina. As VFX Coordinator for Chueco at LASP, I led the department responsible for delivering the show's visual effects, managing the team, coordinating workflows, and maintaining the production quality expected of a major international Disney title. A role that demanded both creative vision and operational precision',
+            period: "2022 — 2022",
+            role: "VFX Coordinator",
+            company: "LASP · Buenos Aires",
+            description:
+              "Helped bring a Disney production to life from Argentina. As VFX Coordinator for Chueco at LASP, I led the department responsible for delivering the show's visual effects, managing the team, coordinating workflows, and maintaining the production quality expected of a major international Disney title. A role that demanded both creative vision and operational precision",
           },
           {
-            period: '2021 — 2022',
-            role: 'Motion Graphic Designer',
-            company: 'Lavaworks · Buenos Aires',
-            description: 'Designed and animated motion graphics content across a wide range of industries and formats, from brand campaigns and TV spots to social media content and advertising. Working in an agency environment sharpened my ability to adapt my style quickly, deliver under tight deadlines, and maintain creative quality across diverse clients and platforms.',
+            period: "2021 — 2022",
+            role: "Motion Graphic Designer",
+            company: "Lavaworks · Buenos Aires",
+            description:
+              "Designed and animated motion graphics content across a wide range of industries and formats, from brand campaigns and TV spots to social media content and advertising. Working in an agency environment sharpened my ability to adapt my style quickly, deliver under tight deadlines, and maintain creative quality across diverse clients and platforms.",
           },
         ],
 
@@ -1097,121 +1096,130 @@
           //   Vimeo URL:   'https://vimeo.com/YOUR_ID'
           //   Leave ''     to show the placeholder
 
-          src: 'https://youtu.be/7r84ngO23ds ' ,
+          src: "https://youtu.be/7r84ngO23ds ",
           // Video duration shown as a badge (optional). Leave '' to hide.
-          duration: '',
+          duration: "",
         },
 
         work: {
-                motion: {
-                  sectionTitle: "Motion Graphics\n& Video Editing",
-                  // Add your pieces below. Each piece can have multiple media items.
-                  // thumbnail: path to the image shown on the card (optional — uses first media item if blank)
-                  // media: array of { type: 'image'|'video', src: 'path or URL' }
-                  pieces: [
-                    {
-                      title: "TODO - BIMO",
-                      description: "TODO - BIMO DESCRIPCION.",
-                      thumbnail: "media/motion/BIMO Billetera.jpg",
-                      media: [
-                        { type: "video", src: "media/motion/BIMO Billetera.mp4" },
-                      ],
-                    },
-                    {
-                      title: "TODO - BALANCE",
-                      description: "TODO - BALANCE DESCRIPCION.",
-                      thumbnail: "media/motion/BALANCE.jpg",
-                      media: [{ type: "video", src: "media/motion/BALANCE.mp4" }],
-                    },
-                    {
-                      title: "TODO - XERTICA",
-                      description: "TODO - XERTICA DESCRIPCION.",
-                      thumbnail: "media/motion/XERTICA Academy.jpg",
-                      media: [
-                        { type: "video", src: "media/motion/XERTICA Academy.mp4" },
-                      ],
-                    },
-                  ],
-                },
-                graphic: {
-                  sectionTitle: "Graphic Design",
-                  pieces: [
-                    {
-                      title: "Blanco Studio",
-                      description: "Design for Blanco Cowork Studio.",
-                      thumbnail: "media/graphic/blanco3.jpg",
-                      media: [
-                        { type: "image", src: "media/graphic/blanco3.jpg" },
-                        { type: "image", src: "media/graphic/blanco1.jpg" },
-                        { type: "image", src: "media/graphic/Blanco.jpg" },
+          motion: {
+            sectionTitle: "Motion Graphics\n& Video Editing",
+            // Add your pieces below. Each piece can have multiple media items.
+            // thumbnail: path to the image shown on the card (optional — uses first media item if blank)
+            // media: array of { type: 'image'|'video', src: 'path or URL' }
+            pieces: [
+              {
+                title: "TODO - BIMO",
+                description: "TODO - BIMO DESCRIPCION.",
+                thumbnail: "media/motion/BIMO Billetera.jpg",
+                media: [
+                  { type: "video", src: "media/motion/BIMO Billetera.mp4" },
+                ],
+              },
+              {
+                title: "TODO - BALANCE",
+                description: "TODO - BALANCE DESCRIPCION.",
+                thumbnail: "media/motion/BALANCE.jpg",
+                media: [{ type: "video", src: "media/motion/BALANCE.mp4" }],
+              },
+              {
+                title: "TODO - XERTICA",
+                description: "TODO - XERTICA DESCRIPCION.",
+                thumbnail: "media/motion/XERTICA Academy.jpg",
+                media: [
+                  { type: "video", src: "media/motion/XERTICA Academy.mp4" },
+                ],
+              },
+            ],
+          },
+          graphic: {
+            sectionTitle: "Graphic Design",
+            pieces: [
+              {
+                title: "Blanco Studio",
+                description: "Design for Blanco Cowork Studio.",
+                thumbnail: "media/graphic/blanco3.jpg",
+                media: [
+                  { type: "image", src: "media/graphic/blanco3.jpg" },
+                  { type: "image", src: "media/graphic/blanco1.jpg" },
+                  { type: "image", src: "media/graphic/Blanco.jpg" },
+                ],
+              },
+              {
+                title: "Ethel Cain posters",
+                description: "Poster design inspired in Ethel Cain work.",
+                thumbnail: "media/graphic/UNO.png",
+                media: [
+                  { type: "image", src: "media/graphic/UNO.png" },
+                  { type: "image", src: "media/graphic/SEGUNDO.png" },
+                  { type: "image", src: "media/graphic/Tres.png" },
+                  { type: "image", src: "media/graphic/todas.png" },
+                ],
+              },
+              {
+                title: "Tini concert",
+                description: "Design the visuals for Tini concert.",
+                thumbnail:
+                  "media/graphic/d193bac8-938f-4901-8222-eec103b9e8ef.jpeg",
 
-                      ],
-                    },
-                    {
-                      title: "Ethel Cain posters",
-                      description: "Poster design inspired in Ethel Cain work.",
-                      thumbnail: "media/graphic/UNO.png",
-                      media: [
-                        { type: "image", src: "media/graphic/UNO.png" },
-                        { type: "image", src: "media/graphic/SEGUNDO.png" },
-                        { type: "image", src: "media/graphic/Tres.png" },
-                        { type: "image", src: "media/graphic/todas.png" },
-                      ],
-                    },
-                    {
-                      title: "Tini concert",
-                      description: "Design the visuals for Tini concert.",
-                      thumbnail:
-                        "media/graphic/d193bac8-938f-4901-8222-eec103b9e8ef.jpeg",
-
-                      media: [
-                        {
-                          type: "image",
-                          src: "media/graphic/d193bac8-938f-4901-8222-eec103b9e8ef.jpeg",
-                        },
-                        { type: "image", src: "media/graphic/pantallas-tini.png" },
-                      ],
-                    },
-                  ],
-                },
-                social: {
-                  sectionTitle: "Social Media",
-                  pieces: [
-                    {
-                      title: "TODO - HaceloGirar",
-                      description: "TODO - HaceloGirar.",
-                      thumbnail: "media/social/HaceloGirar.mp4",
-                      media: [{ type: "video", src: "media/social/HaceloGirar.mp4" }],
-                    },
-                    {
-                      title: "TODO - Bauti",
-                      description: "TODO - Bauti Descripcion.",
-                      thumbnail: "media/social/Bauti.mp4",
-                      media: [{ type: "video", src: "media/social/Bauti.mp4" }],
-                    },
-                    {
-                      title: "TODO - Lemon",
-                      description: "TODO - Lemon Descripcion.",
-                      thumbnail: "media/social/Lemon.mp4",
-                      media: [{ type: "video", src: "media/social/Lemon.mp4" }],
-                    },
-                    {
-                      title: "TODO - SKYYVODKA",
-                      description: "TODO - SKYYVODKA Descripcion.",
-                      thumbnail: "media/social/SKYYVODKA.mp4",
-                      media: [{ type: "video", src: "media/social/SKYYVODKA.mp4" }],
-                    },
-                  ],
-                },
-              }
+                media: [
+                  {
+                    type: "image",
+                    src: "media/graphic/d193bac8-938f-4901-8222-eec103b9e8ef.jpeg",
+                  },
+                  { type: "image", src: "media/graphic/pantallas-tini.png" },
+                ],
+              },
+            ],
+          },
+          social: {
+            sectionTitle: "Social Media",
+            pieces: [
+              {
+                title: "TODO - HaceloGirar",
+                description: "TODO - HaceloGirar.",
+                thumbnail: "media/social/HaceloGirar.mp4",
+                media: [{ type: "video", src: "media/social/HaceloGirar.mp4" }],
+              },
+              {
+                title: "TODO - Bauti",
+                description: "TODO - Bauti Descripcion.",
+                thumbnail: "media/social/Bauti.mp4",
+                media: [{ type: "video", src: "media/social/Bauti.mp4" }],
+              },
+              {
+                title: "TODO - Lemon",
+                description: "TODO - Lemon Descripcion.",
+                thumbnail: "media/social/Lemon.mp4",
+                media: [{ type: "video", src: "media/social/Lemon.mp4" }],
+              },
+              {
+                title: "TODO - SKYYVODKA",
+                description: "TODO - SKYYVODKA Descripcion.",
+                thumbnail: "media/social/SKYYVODKA.mp4",
+                media: [{ type: "video", src: "media/social/SKYYVODKA.mp4" }],
+              },
+            ],
+          },
+        },
 
         contact: {
           // HTML allowed in intro
-          intro: 'Interested in working together? I\'m available for <strong>freelance projects</strong>, <strong>collaborations</strong>, and <strong>full-time opportunities</strong>.<br><br>Let\'s create something bold.',
-          email:    { label: 'sgarciakatz@gmail.com',             url: 'mailto:sgarciakatz@gmail.com' },
-          linkedin: { label: 'linkedin.com/in/sofia-garcia-katz',    url: 'https://www.linkedin.com/in/sofia-garcia-katz/?locale=en' },
-          instagram:{ label: '@gekadesign',                   url: 'https://www.instagram.com/geka_design/' },
-          location: 'Buenos Aires, Argentina',
+          intro:
+            "Interested in working together? I'm available for <strong>freelance projects</strong>, <strong>collaborations</strong>, and <strong>full-time opportunities</strong>.<br><br>Let's create something bold.",
+          email: {
+            label: "sgarciakatz@gmail.com",
+            url: "mailto:sgarciakatz@gmail.com",
+          },
+          linkedin: {
+            label: "linkedin.com/in/sofia-garcia-katz",
+            url: "https://www.linkedin.com/in/sofia-garcia-katz/?locale=en",
+          },
+          instagram: {
+            label: "@gekadesign",
+            url: "https://www.instagram.com/geka_design/",
+          },
+          location: "Buenos Aires, Argentina",
         },
       };
 
@@ -1222,7 +1230,7 @@
       function renderNav() {
         const d = PORTFOLIO_DATA;
         const initials = d.name.first[0] + d.name.middle[0] + d.name.last[0];
-        document.getElementById('nav').innerHTML = `
+        document.getElementById("nav").innerHTML = `
           <div class="nav-logo">${initials}<span>.</span></div>
           <div class="nav-links">
             <a href="#about">About</a>
@@ -1238,7 +1246,7 @@
 
       function renderHero() {
         const d = PORTFOLIO_DATA;
-        document.getElementById('hero').innerHTML = `
+        document.getElementById("hero").innerHTML = `
           <div class="hero-bg-accent"></div>
           <div class="hero-bg-accent2"></div>
           <div class="hero-eyebrow">${d.location}</div>
@@ -1259,13 +1267,11 @@
       function renderAbout() {
         const d = PORTFOLIO_DATA;
         const det = d.about.details;
-        const aw  = d.about.award;
+        const aw = d.about.award;
 
-        const logoHtml = aw.logo
-          ? `<img src="${aw.logo}" alt="Award logo" style="width:52px;height:52px;object-fit:contain;border-radius:4px;">`
-          : `<div class="award-logo-placeholder">🏅</div><div class="award-logo-hint">Award<br>logo</div>`;
+        const logoHtml = `<div class="award-trophy">🏆</div>`;
 
-        document.getElementById('about').innerHTML = `
+        document.getElementById("about").innerHTML = `
           <div class="section-eyebrow">About Me</div>
           <div class="section-title">Who I Am</div>
           <div class="about-grid">
@@ -1311,8 +1317,10 @@
 
       function renderExperience() {
         const d = PORTFOLIO_DATA;
-        const items = d.experience.map((e, i) => `
-          <div class="exp-item" ${i === d.experience.length - 1 ? 'style="border-bottom:none"' : ''}>
+        const items = d.experience
+          .map(
+            (e, i) => `
+          <div class="exp-item" ${i === d.experience.length - 1 ? 'style="border-bottom:none"' : ""}>
             <div class="exp-period">${e.period}</div>
             <div>
               <div class="exp-role">${e.role}</div>
@@ -1320,9 +1328,11 @@
               <div class="exp-desc">${e.description}</div>
             </div>
           </div>
-        `).join('');
+        `,
+          )
+          .join("");
 
-        document.getElementById('experience').innerHTML = `
+        document.getElementById("experience").innerHTML = `
           <div class="section-eyebrow">Career</div>
           <div class="section-title">Experience</div>
           <div class="exp-list">${items}</div>
@@ -1333,18 +1343,21 @@
       function getEmbedInfo(src) {
         if (!src) return null;
         if (/youtube\.com\/watch\?v=/.test(src)) {
-          const id = new URL(src).searchParams.get('v');
-          return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
+          const id = new URL(src).searchParams.get("v");
+          return { type: "iframe", url: `https://www.youtube.com/embed/${id}` };
         }
         if (/youtu\.be\//.test(src)) {
-          const id = src.split('youtu.be/')[1].split('?')[0];
-          return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
+          const id = src.split("youtu.be/")[1].split("?")[0];
+          return { type: "iframe", url: `https://www.youtube.com/embed/${id}` };
         }
         if (/vimeo\.com\/(\d+)/.test(src)) {
           const id = src.match(/vimeo\.com\/(\d+)/)[1];
-          return { type: 'iframe', url: `https://player.vimeo.com/video/${id}` };
+          return {
+            type: "iframe",
+            url: `https://player.vimeo.com/video/${id}`,
+          };
         }
-        return { type: 'video', url: src };
+        return { type: "video", url: src };
       }
 
       function renderReel() {
@@ -1358,16 +1371,17 @@
               <div class="reel-play-btn">▶</div>
               <div class="reel-play-label">Watch Showreel</div>
             </div>`;
-        } else if (embed.type === 'iframe') {
+        } else if (embed.type === "iframe") {
           playerHtml = `<iframe src="${embed.url}" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
         } else {
           playerHtml = `<video src="${embed.url}" controls style="width:100%;height:100%;"></video>`;
         }
 
         const durationHtml = reel.duration
-          ? `<div class="reel-duration">${reel.duration}</div>` : '';
+          ? `<div class="reel-duration">${reel.duration}</div>`
+          : "";
 
-        document.getElementById('reel').innerHTML = `
+        document.getElementById("reel").innerHTML = `
           <div class="section-eyebrow">Showreel</div>
           <div class="reel-heading">My <span>Reel</span></div>
           <div class="reel-container">
@@ -1379,9 +1393,9 @@
 
       function renderWorkSections() {
         const sections = [
-          { key: 'motion',  id: 'motion',  data: PORTFOLIO_DATA.work.motion },
-          { key: 'graphic', id: 'graphic', data: PORTFOLIO_DATA.work.graphic },
-          { key: 'social',  id: 'social',  data: PORTFOLIO_DATA.work.social },
+          { key: "motion", id: "motion", data: PORTFOLIO_DATA.work.motion },
+          { key: "graphic", id: "graphic", data: PORTFOLIO_DATA.work.graphic },
+          { key: "social", id: "social", data: PORTFOLIO_DATA.work.social },
         ];
 
         const MIN_CELLS = 6;
@@ -1389,20 +1403,22 @@
         sections.forEach(({ key, id, data }) => {
           const pieces = data.pieces;
 
-          const cardHtml = pieces.map((piece, i) => {
-            const firstMedia = piece.media && piece.media[0];
-            const isVideo    = firstMedia && firstMedia.type === 'video';
-            const thumbSrc   = piece.thumbnail || (firstMedia ? firstMedia.src : '');
-            const thumbStyle = thumbSrc
-              ? `background-image:url('${thumbSrc}');background-size:cover;background-position:center;`
-              : '';
-            const count = piece.media ? piece.media.length : 0;
+          const cardHtml = pieces
+            .map((piece, i) => {
+              const firstMedia = piece.media && piece.media[0];
+              const isVideo = firstMedia && firstMedia.type === "video";
+              const thumbSrc =
+                piece.thumbnail || (firstMedia ? firstMedia.src : "");
+              const thumbStyle = thumbSrc
+                ? `background-image:url('${thumbSrc}');background-size:cover;background-position:center;`
+                : "";
+              const count = piece.media ? piece.media.length : 0;
 
-            return `
+              return `
               <div class="work-card" onclick="openModal('${key}', ${i})">
                 <div class="card-thumb" style="${thumbStyle}">
-                  ${isVideo ? '<div class="card-play">▶</div>' : ''}
-                  ${count > 0 ? `<div class="card-thumb-count">⊞ ${count} media</div>` : ''}
+                  ${isVideo ? '<div class="card-play">▶</div>' : ""}
+                  ${count > 0 ? `<div class="card-thumb-count">⊞ ${count} media</div>` : ""}
                 </div>
                 <div class="card-body">
                   <div class="card-title">${piece.title}</div>
@@ -1410,16 +1426,21 @@
                   <div class="card-hover-hint">Click to view</div>
                 </div>
               </div>`;
-          }).join('');
+            })
+            .join("");
 
           const placeholderCount = Math.max(0, MIN_CELLS - pieces.length);
-          const placeholderHtml  = Array(placeholderCount).fill(`
+          const placeholderHtml = Array(placeholderCount)
+            .fill(
+              `
             <div class="work-card placeholder">
               <div class="placeholder-plus">+</div>
               <div class="placeholder-text">Add work piece</div>
-            </div>`).join('');
+            </div>`,
+            )
+            .join("");
 
-          const titleHtml = data.sectionTitle.replaceAll('\n', '<br>');
+          const titleHtml = data.sectionTitle.replaceAll("\n", "<br>");
 
           document.getElementById(id).innerHTML = `
             <div class="section-eyebrow">Featured Work</div>
@@ -1431,66 +1452,78 @@
 
       /* ── Modal ─────────────────────────────────── */
       let _modalPieces = [];
-      let _modalSlide  = 0;
+      let _modalSlide = 0;
 
       function openModal(sectionKey, pieceIndex) {
-        const piece     = PORTFOLIO_DATA.work[sectionKey].pieces[pieceIndex];
-        _modalPieces    = piece.media || [];
-        _modalSlide     = 0;
+        const piece = PORTFOLIO_DATA.work[sectionKey].pieces[pieceIndex];
+        _modalPieces = piece.media || [];
+        _modalSlide = 0;
 
-        document.getElementById('modal-title').textContent = piece.title;
-        document.getElementById('modal-desc').textContent  = piece.description;
+        document.getElementById("modal-title").textContent = piece.title;
+        document.getElementById("modal-desc").textContent = piece.description;
 
         // Build dots
-        const dotsEl = document.getElementById('modal-dots');
-        dotsEl.innerHTML = _modalPieces.map((_, i) =>
-          `<div class="dot${i === 0 ? ' active' : ''}" onclick="goToSlide(${i})"></div>`
-        ).join('');
+        const dotsEl = document.getElementById("modal-dots");
+        dotsEl.innerHTML = _modalPieces
+          .map(
+            (_, i) =>
+              `<div class="dot${i === 0 ? " active" : ""}" onclick="goToSlide(${i})"></div>`,
+          )
+          .join("");
 
         // Hide nav arrows when only 1 slide
-        document.querySelector('.slide-nav').style.display =
-          _modalPieces.length > 1 ? 'flex' : 'none';
+        document.querySelector(".slide-nav").style.display =
+          _modalPieces.length > 1 ? "flex" : "none";
 
         _renderSlide(0);
-        document.getElementById('modal-overlay').classList.add('open');
+        document.getElementById("modal-overlay").classList.add("open");
       }
 
       function closeModal() {
-        document.getElementById('modal-overlay').classList.remove('open');
-        document.getElementById('modal-slide-content').innerHTML = '';
+        document.getElementById("modal-overlay").classList.remove("open");
+        document.getElementById("modal-slide-content").innerHTML = "";
       }
 
       function handleOverlayClick(e) {
-        if (e.target === document.getElementById('modal-overlay')) closeModal();
+        if (e.target === document.getElementById("modal-overlay")) closeModal();
       }
 
       function goToSlide(n) {
         _modalSlide = (n + _modalPieces.length) % _modalPieces.length;
         _renderSlide(_modalSlide);
-        document.querySelectorAll('#modal-dots .dot').forEach((dot, i) =>
-          dot.classList.toggle('active', i === _modalSlide)
-        );
+        document
+          .querySelectorAll("#modal-dots .dot")
+          .forEach((dot, i) =>
+            dot.classList.toggle("active", i === _modalSlide),
+          );
       }
 
       function nextSlide() {
-        if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+        if (
+          !document.getElementById("modal-overlay").classList.contains("open")
+        )
+          return;
         goToSlide(_modalSlide + 1);
       }
 
       function prevSlide() {
-        if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+        if (
+          !document.getElementById("modal-overlay").classList.contains("open")
+        )
+          return;
         goToSlide(_modalSlide - 1);
       }
 
       function _renderSlide(n) {
-        const media   = _modalPieces[n];
-        const content = document.getElementById('modal-slide-content');
+        const media = _modalPieces[n];
+        const content = document.getElementById("modal-slide-content");
         if (!media) {
-          content.innerHTML = '<p style="color:#8AA0B4;font-size:14px;letter-spacing:1px;">No media added yet</p>';
+          content.innerHTML =
+            '<p style="color:#8AA0B4;font-size:14px;letter-spacing:1px;">No media added yet</p>';
           return;
         }
 
-        if (media.type === 'image') {
+        if (media.type === "image") {
           content.innerHTML = `<img src="${media.src}" alt=""
             style="width:100%;height:100%;object-fit:contain;">`;
           return;
@@ -1498,9 +1531,12 @@
 
         // video type
         const embed = getEmbedInfo(media.src);
-        if (!embed) { content.innerHTML = ''; return; }
+        if (!embed) {
+          content.innerHTML = "";
+          return;
+        }
 
-        if (embed.type === 'iframe') {
+        if (embed.type === "iframe") {
           content.innerHTML = `<iframe src="${embed.url}"
             style="width:100%;height:100%;border:none;"
             allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
@@ -1512,7 +1548,7 @@
 
       function renderContact() {
         const c = PORTFOLIO_DATA.contact;
-        document.getElementById('contact').innerHTML = `
+        document.getElementById("contact").innerHTML = `
           <div class="section-eyebrow">Get in Touch</div>
           <div class="section-title">Contact</div>
           <div class="contact-grid">
@@ -1553,13 +1589,13 @@
 
       function renderFooter() {
         const d = PORTFOLIO_DATA;
-        document.getElementById('footer').innerHTML = `
+        document.getElementById("footer").innerHTML = `
           <div class="footer-name">${d.name.first} ${d.name.middle} ${d.name.last}<span>.</span></div>
           <div class="footer-copy">© ${new Date().getFullYear()} · ${d.role} · ${d.location}</div>
         `;
       }
 
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         renderNav();
         renderHero();
         renderAbout();
@@ -1570,10 +1606,10 @@
         renderFooter();
       });
 
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape')      closeModal();
-        if (e.key === 'ArrowRight')  nextSlide();
-        if (e.key === 'ArrowLeft')   prevSlide();
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowRight") nextSlide();
+        if (e.key === "ArrowLeft") prevSlide();
       });
     </script>
   </body>
