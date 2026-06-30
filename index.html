@@ -1,1009 +1,1580 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sofia Garcia Katz — Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-<style>
-/* ── RESET ───────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sofia Garcia Katz — Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=Inter:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── RESET ───────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-/* ── TOKENS ──────────────────────────────── */
-:root {
-  --navy:   #0D1B2A;
-  --navy2:  #122333;
-  --navy3:  #1A2F42;
-  --coral:  #FF6B6B;
-  --sky:    #6BCBEA;
-  --violet: #C77DFF;
-  --yellow: #FFD93D;
-  --white:  #F4F8FB;
-  --muted:  #8AA0B4;
-  --border: #1E3048;
-}
+      /* ── TOKENS ──────────────────────────────── */
+      :root {
+        --navy: #0d1b2a;
+        --navy2: #122333;
+        --navy3: #1a2f42;
+        --coral: #ff6b6b;
+        --sky: #6bcbea;
+        --violet: #c77dff;
+        --yellow: #ffd93d;
+        --white: #f4f8fb;
+        --muted: #8aa0b4;
+        --border: #1e3048;
+      }
 
-html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-/* ── BASE ────────────────────────────────── */
-body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--navy);
-  color: var(--white);
-  overflow-x: hidden;
-}
-a { color: inherit; text-decoration: none; }
+      /* ── BASE ────────────────────────────────── */
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+        background: var(--navy);
+        color: var(--white);
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-/* ── NAV ─────────────────────────────────── */
-#nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(13,27,42,0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 0 60px; height: 64px;
-}
-.nav-logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800; font-size: 20px; letter-spacing: -0.5px;
-}
-.nav-logo span { color: var(--coral); }
-.nav-links { display: flex; gap: 36px; flex-wrap: wrap; }
-.nav-links a {
-  font-size: 13px; font-weight: 500; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--muted); transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--yellow); }
+      /* ── NAV ─────────────────────────────────── */
+      #nav {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(13, 27, 42, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 60px;
+        height: 64px;
+      }
+      .nav-logo {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: -0.5px;
+      }
+      .nav-logo span {
+        color: var(--coral);
+      }
+      .nav-links {
+        display: flex;
+        gap: 36px;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--yellow);
+      }
 
-/* ── HERO ────────────────────────────────── */
-#hero {
-  min-height: 100vh;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: 100px 60px 80px;
-  position: relative; overflow: hidden;
-}
-.hero-bg-accent {
-  position: absolute; top: -80px; right: -80px;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(199,125,255,0.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-bg-accent2 {
-  position: absolute; bottom: 40px; left: -100px;
-  width: 400px; height: 400px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(107,203,234,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  font-size: 12px; font-weight: 700; letter-spacing: 4px;
-  text-transform: uppercase; color: var(--sky); margin-bottom: 20px;
-  display: flex; align-items: center; gap: 12px;
-}
-.hero-eyebrow::before { content: ''; width: 40px; height: 2px; background: var(--sky); }
-.hero-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800; font-size: clamp(52px, 8vw, 110px);
-  line-height: 0.95; letter-spacing: -3px; max-width: 900px;
-}
-.accent-coral { color: var(--coral); }
-.accent-yellow { color: var(--yellow); }
-.hero-tagline {
-  margin-top: 32px; font-size: 18px; color: var(--muted);
-  max-width: 520px; line-height: 1.6;
-}
-.hero-cta { margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--coral); color: #fff;
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 13px; letter-spacing: 1px;
-  text-transform: uppercase; padding: 14px 32px; border-radius: 4px;
-}
-.btn-outline {
-  border: 2px solid var(--muted); color: var(--muted);
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 13px; letter-spacing: 1px;
-  text-transform: uppercase; padding: 12px 32px; border-radius: 4px;
-  background: none;
-}
-.hero-scroll-hint {
-  position: absolute; bottom: 40px; left: 60px;
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); display: flex; align-items: center; gap: 12px;
-}
-.hero-scroll-hint::after { content: ''; width: 60px; height: 1px; background: var(--muted); }
+      /* ── HERO ────────────────────────────────── */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 100px 60px 80px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg-accent {
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(199, 125, 255, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-bg-accent2 {
+        position: absolute;
+        bottom: 40px;
+        left: -100px;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(107, 203, 234, 0.08) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+      .hero-eyebrow {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sky);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-eyebrow::before {
+        content: "";
+        width: 40px;
+        height: 2px;
+        background: var(--sky);
+      }
+      .hero-name {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: clamp(52px, 8vw, 110px);
+        line-height: 0.95;
+        letter-spacing: -3px;
+        max-width: 900px;
+      }
+      .accent-coral {
+        color: var(--coral);
+      }
+      .accent-yellow {
+        color: var(--yellow);
+      }
+      .hero-tagline {
+        margin-top: 32px;
+        font-size: 18px;
+        color: var(--muted);
+        max-width: 520px;
+        line-height: 1.6;
+      }
+      .hero-cta {
+        margin-top: 48px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: var(--coral);
+        color: #fff;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 14px 32px;
+        border-radius: 4px;
+      }
+      .btn-outline {
+        border: 2px solid var(--muted);
+        color: var(--muted);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 12px 32px;
+        border-radius: 4px;
+        background: none;
+      }
+      .hero-scroll-hint {
+        position: absolute;
+        bottom: 40px;
+        left: 60px;
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .hero-scroll-hint::after {
+        content: "";
+        width: 60px;
+        height: 1px;
+        background: var(--muted);
+      }
 
-/* ── SECTIONS — COMMON ───────────────────── */
-section, #reel, #footer { scroll-margin-top: 68px; }
-section { padding: 100px 60px; }
-.section-eyebrow {
-  font-size: 11px; font-weight: 700; letter-spacing: 4px;
-  text-transform: uppercase; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 12px;
-}
-.section-eyebrow::before { content: ''; width: 32px; height: 2px; }
-.section-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800; font-size: clamp(32px, 4vw, 52px);
-  letter-spacing: -1px; line-height: 1.05; margin-bottom: 48px;
-}
+      /* ── SECTIONS — COMMON ───────────────────── */
+      section,
+      #reel,
+      #footer {
+        scroll-margin-top: 68px;
+      }
+      section {
+        padding: 100px 60px;
+      }
+      .section-eyebrow {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .section-eyebrow::before {
+        content: "";
+        width: 32px;
+        height: 2px;
+      }
+      .section-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: clamp(32px, 4vw, 52px);
+        letter-spacing: -1px;
+        line-height: 1.05;
+        margin-bottom: 48px;
+      }
 
-/* ── ABOUT ───────────────────────────────── */
-#about { background: var(--navy2); border-top: 1px solid var(--border); }
-#about .section-eyebrow { color: var(--yellow); }
-#about .section-eyebrow::before { background: var(--yellow); }
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.about-bio { font-size: 17px; color: var(--muted); line-height: 1.75; }
-.about-bio strong { color: var(--white); }
-.about-sidebar { display: flex; flex-direction: column; gap: 20px; }
-.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.detail-cell {
-  background: var(--navy3); border-radius: 8px;
-  padding: 16px 18px; border-top: 3px solid;
-}
-.detail-label {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; margin-bottom: 7px;
-}
-.detail-value { font-size: 14px; color: var(--white); font-weight: 600; line-height: 1.4; }
-.detail-sub { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.4; }
-.award-card {
-  background: var(--navy3); border-radius: 8px;
-  border: 1px solid rgba(255,217,61,0.25); overflow: hidden;
-}
-.award-card-inner { display: flex; }
-.award-logo {
-  width: 96px; flex-shrink: 0;
-  background: rgba(255,217,61,0.06);
-  border-right: 1px solid rgba(255,217,61,0.15);
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 8px; padding: 20px 10px;
-}
-.award-logo-placeholder {
-  width: 52px; height: 52px; border-radius: 8px;
-  border: 2px dashed rgba(255,217,61,0.3);
-  display: flex; align-items: center; justify-content: center; font-size: 22px;
-}
-.award-logo-hint {
-  font-size: 9px; text-align: center; color: rgba(255,217,61,0.4);
-  letter-spacing: 0.5px; line-height: 1.4;
-}
-.award-content { flex: 1; padding: 20px 22px; }
-.award-eyebrow {
-  font-size: 10px; font-weight: 700; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--yellow); margin-bottom: 8px;
-  display: flex; align-items: center; gap: 8px;
-}
-.award-eyebrow::before { content: '🏆'; font-size: 13px; }
-.award-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 15px; color: var(--white);
-  line-height: 1.35; margin-bottom: 6px;
-}
-.award-sub { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
-.award-link {
-  display: inline-flex; align-items: center; gap: 5px;
-  font-size: 11px; font-weight: 700; letter-spacing: 1px;
-  text-transform: uppercase; color: var(--yellow);
-  border-bottom: 1px solid rgba(255,217,61,0.3); padding-bottom: 1px;
-}
-.award-link::after { content: '↗'; }
-.award-link:hover { color: var(--white); }
+      /* ── ABOUT ───────────────────────────────── */
+      #about {
+        background: var(--navy2);
+        border-top: 1px solid var(--border);
+      }
+      #about .section-eyebrow {
+        color: var(--yellow);
+      }
+      #about .section-eyebrow::before {
+        background: var(--yellow);
+      }
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+      }
+      .about-bio {
+        font-size: 17px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+      .about-bio strong {
+        color: var(--white);
+      }
+      .about-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .detail-cell {
+        background: var(--navy3);
+        border-radius: 8px;
+        padding: 16px 18px;
+        border-top: 3px solid;
+      }
+      .detail-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+      .detail-value {
+        font-size: 14px;
+        color: var(--white);
+        font-weight: 600;
+        line-height: 1.4;
+      }
+      .detail-sub {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 3px;
+        line-height: 1.4;
+      }
+      .award-card {
+        background: var(--navy3);
+        border-radius: 8px;
+        border: 1px solid rgba(255, 217, 61, 0.25);
+        overflow: hidden;
+      }
+      .award-card-inner {
+        display: flex;
+      }
+      .award-logo {
+        width: 96px;
+        flex-shrink: 0;
+        background: rgba(255, 217, 61, 0.06);
+        border-right: 1px solid rgba(255, 217, 61, 0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 20px 10px;
+      }
+      .award-logo-placeholder {
+        width: 52px;
+        height: 52px;
+        border-radius: 8px;
+        border: 2px dashed rgba(255, 217, 61, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+      }
+      .award-logo-hint {
+        font-size: 9px;
+        text-align: center;
+        color: rgba(255, 217, 61, 0.4);
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+      }
+      .award-content {
+        flex: 1;
+        padding: 20px 22px;
+      }
+      .award-eyebrow {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--yellow);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .award-eyebrow::before {
+        content: "🏆";
+        font-size: 13px;
+      }
+      .award-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--white);
+        line-height: 1.35;
+        margin-bottom: 6px;
+      }
+      .award-sub {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .award-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: var(--yellow);
+        border-bottom: 1px solid rgba(255, 217, 61, 0.3);
+        padding-bottom: 1px;
+      }
+      .award-link::after {
+        content: "↗";
+      }
+      .award-link:hover {
+        color: var(--white);
+      }
 
-/* ── EXPERIENCE ──────────────────────────── */
-#experience { background: var(--navy); border-top: 1px solid var(--border); }
-#experience .section-eyebrow { color: var(--violet); }
-#experience .section-eyebrow::before { background: var(--violet); }
-.exp-list { display: flex; flex-direction: column; }
-.exp-item {
-  display: grid; grid-template-columns: 200px 1fr;
-  gap: 40px; padding: 36px 0; border-bottom: 1px solid var(--border);
-}
-.exp-period { font-size: 13px; color: var(--muted); font-weight: 500; padding-top: 6px; }
-.exp-role {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 20px; margin-bottom: 4px;
-}
-.exp-company { font-size: 14px; color: var(--violet); font-weight: 500; margin-bottom: 10px; }
-.exp-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+      /* ── EXPERIENCE ──────────────────────────── */
+      #experience {
+        background: var(--navy);
+        border-top: 1px solid var(--border);
+      }
+      #experience .section-eyebrow {
+        color: var(--violet);
+      }
+      #experience .section-eyebrow::before {
+        background: var(--violet);
+      }
+      .exp-list {
+        display: flex;
+        flex-direction: column;
+      }
+      .exp-item {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 40px;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .exp-period {
+        font-size: 13px;
+        color: var(--muted);
+        font-weight: 500;
+        padding-top: 6px;
+      }
+      .exp-role {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+        margin-bottom: 4px;
+      }
+      .exp-company {
+        font-size: 14px;
+        color: var(--violet);
+        font-weight: 500;
+        margin-bottom: 10px;
+      }
+      .exp-desc {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
 
-/* ── REEL ────────────────────────────────── */
-#reel {
-  background: #060e17; border-top: 1px solid var(--border);
-  padding: 80px 60px;
-}
-#reel .section-eyebrow { color: var(--coral); }
-#reel .section-eyebrow::before { background: var(--coral); }
-.reel-heading {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800; font-size: clamp(28px, 3.5vw, 44px);
-  letter-spacing: -1px; margin-bottom: 36px;
-}
-.reel-heading span { color: var(--coral); }
-.reel-container {
-  width: 100%; aspect-ratio: 16 / 7;
-  background: #0a1520; border-radius: 12px;
-  border: 1px solid var(--border);
-  position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
-.reel-container::before {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,107,107,0.06) 0%, transparent 40%),
-              linear-gradient(315deg, rgba(199,125,255,0.06) 0%, transparent 40%);
-  pointer-events: none;
-}
-.reel-play-wrap {
-  display: flex; flex-direction: column; align-items: center; gap: 20px; z-index: 1;
-}
-.reel-play-btn {
-  width: 80px; height: 80px; border-radius: 50%;
-  background: var(--coral);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px; color: #fff;
-  box-shadow: 0 0 0 16px rgba(255,107,107,0.12), 0 0 0 32px rgba(255,107,107,0.05);
-}
-.reel-play-label {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 14px; letter-spacing: 3px;
-  text-transform: uppercase; color: var(--muted);
-}
-.reel-duration {
-  position: absolute; bottom: 20px; right: 24px;
-  font-size: 12px; color: var(--muted); letter-spacing: 1px;
-  background: rgba(6,14,23,0.8); padding: 4px 12px; border-radius: 20px;
-}
+      /* ── REEL ────────────────────────────────── */
+      #reel {
+        background: #060e17;
+        border-top: 1px solid var(--border);
+        padding: 80px 60px;
+      }
+      #reel .section-eyebrow {
+        color: var(--coral);
+      }
+      #reel .section-eyebrow::before {
+        background: var(--coral);
+      }
+      .reel-heading {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: clamp(28px, 3.5vw, 44px);
+        letter-spacing: -1px;
+        margin-bottom: 36px;
+      }
+      .reel-heading span {
+        color: var(--coral);
+      }
+      .reel-container {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+        background: #0a1520;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .reel-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 107, 107, 0.06) 0%,
+            transparent 40%
+          ),
+          linear-gradient(315deg, rgba(199, 125, 255, 0.06) 0%, transparent 40%);
+        pointer-events: none;
+      }
+      .reel-play-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        z-index: 1;
+      }
+      .reel-play-btn {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--coral);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: #fff;
+        box-shadow:
+          0 0 0 16px rgba(255, 107, 107, 0.12),
+          0 0 0 32px rgba(255, 107, 107, 0.05);
+      }
+      .reel-play-label {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .reel-duration {
+        position: absolute;
+        bottom: 20px;
+        right: 24px;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 1px;
+        background: rgba(6, 14, 23, 0.8);
+        padding: 4px 12px;
+        border-radius: 20px;
+      }
 
-/* ── WORK SECTIONS ───────────────────────── */
-.work-section { border-top: 1px solid var(--border); }
-#motion  { background: var(--navy2); }
-#graphic { background: var(--navy);  }
-#social  { background: var(--navy2); }
-#motion  .section-eyebrow { color: var(--coral); }
-#motion  .section-eyebrow::before { background: var(--coral); }
-#graphic .section-eyebrow { color: var(--sky); }
-#graphic .section-eyebrow::before { background: var(--sky); }
-#social  .section-eyebrow { color: var(--violet); }
-#social  .section-eyebrow::before { background: var(--violet); }
+      /* ── WORK SECTIONS ───────────────────────── */
+      .work-section {
+        border-top: 1px solid var(--border);
+      }
+      #motion {
+        background: var(--navy2);
+      }
+      #graphic {
+        background: var(--navy);
+      }
+      #social {
+        background: var(--navy2);
+      }
+      #motion .section-eyebrow {
+        color: var(--coral);
+      }
+      #motion .section-eyebrow::before {
+        background: var(--coral);
+      }
+      #graphic .section-eyebrow {
+        color: var(--sky);
+      }
+      #graphic .section-eyebrow::before {
+        background: var(--sky);
+      }
+      #social .section-eyebrow {
+        color: var(--violet);
+      }
+      #social .section-eyebrow::before {
+        background: var(--violet);
+      }
 
-.work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
 
-.work-card {
-  background: var(--navy3); border-radius: 10px; overflow: hidden;
-  cursor: pointer; border: 1px solid transparent;
-  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-}
-.work-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-}
-#motion  .work-card:hover { border-color: var(--coral); }
-#graphic .work-card:hover { border-color: var(--sky); }
-#social  .work-card:hover { border-color: var(--violet); }
+      .work-card {
+        background: var(--navy3);
+        border-radius: 10px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          transform 0.25s,
+          border-color 0.25s,
+          box-shadow 0.25s;
+      }
+      .work-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+      #motion .work-card:hover {
+        border-color: var(--coral);
+      }
+      #graphic .work-card:hover {
+        border-color: var(--sky);
+      }
+      #social .work-card:hover {
+        border-color: var(--violet);
+      }
 
-.work-card.placeholder {
-  border: 2px dashed var(--border); background: transparent;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  min-height: 220px; gap: 10px; cursor: default;
-}
-.work-card.placeholder:hover { transform: none; box-shadow: none; border-color: var(--border); }
-.placeholder-plus {
-  width: 40px; height: 40px; border-radius: 50%;
-  border: 2px dashed #2a4060;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; color: #2a4060;
-}
-.placeholder-text {
-  font-size: 12px; color: #2a4060;
-  letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
-}
+      .work-card.placeholder {
+        border: 2px dashed var(--border);
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 220px;
+        gap: 10px;
+        cursor: default;
+      }
+      .work-card.placeholder:hover {
+        transform: none;
+        box-shadow: none;
+        border-color: var(--border);
+      }
+      .placeholder-plus {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px dashed #2a4060;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: #2a4060;
+      }
+      .placeholder-text {
+        font-size: 12px;
+        color: #2a4060;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
 
-.card-thumb {
-  height: 180px; position: relative;
-  background: var(--navy2); background-size: cover; background-position: center;
-  overflow: hidden;
-}
-.card-play {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255,107,107,0.9);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 16px; color: #fff; pointer-events: none;
-}
-.card-thumb-count {
-  position: absolute; top: 10px; right: 10px;
-  background: rgba(13,27,42,0.85);
-  font-size: 11px; color: var(--muted); font-weight: 600;
-  padding: 3px 8px; border-radius: 20px;
-}
-.card-body { padding: 16px 18px 20px; }
-.card-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700; font-size: 16px; margin-bottom: 6px; line-height: 1.2;
-}
-.card-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
-.card-hover-hint {
-  font-size: 11px; color: #2a4060; letter-spacing: 1px;
-  text-transform: uppercase; margin-top: 10px;
-  display: flex; align-items: center; gap: 6px;
-}
-.card-hover-hint::before { content: '→'; }
+      .card-thumb {
+        height: 180px;
+        position: relative;
+        background: var(--navy2);
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+      }
+      .card-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(255, 107, 107, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+      }
+      .card-thumb-count {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(13, 27, 42, 0.85);
+        font-size: 11px;
+        color: var(--muted);
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 20px;
+      }
+      .card-body {
+        padding: 16px 18px 20px;
+      }
+      .card-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 6px;
+        line-height: 1.2;
+      }
+      .card-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+      .card-hover-hint {
+        font-size: 11px;
+        color: #2a4060;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .card-hover-hint::before {
+        content: "→";
+      }
 
-/* ── MODAL ───────────────────────────────── */
-#modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 1000;
-  background: rgba(5,12,20,0.95);
-  align-items: center; justify-content: center; padding: 40px;
-}
-#modal-overlay.open { display: flex; }
-.modal {
-  background: var(--navy2); border-radius: 12px; overflow: hidden;
-  max-width: 860px; width: 100%;
-  border: 1px solid var(--border); position: relative;
-  max-height: 90vh; display: flex; flex-direction: column;
-}
-.modal-close {
-  position: absolute; top: 16px; right: 20px;
-  font-size: 22px; color: var(--muted); cursor: pointer;
-  background: none; border: none; z-index: 10; line-height: 1;
-}
-.modal-close:hover { color: var(--white); }
-.modal-slideshow {
-  position: relative; height: 420px; flex-shrink: 0;
-  background: #060e17; overflow: hidden;
-}
-#modal-slide-content {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.slide-nav {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  width: 100%; display: flex; justify-content: space-between;
-  padding: 0 16px; pointer-events: none; z-index: 2;
-}
-.slide-btn {
-  pointer-events: all;
-  background: rgba(13,27,42,0.8); border: 1px solid var(--border);
-  color: var(--white); width: 40px; height: 40px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; font-size: 16px; transition: background 0.2s;
-}
-.slide-btn:hover { background: var(--coral); border-color: var(--coral); }
-#modal-dots {
-  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
-  display: flex; gap: 7px; z-index: 2;
-}
-.dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: #2a4060; cursor: pointer; transition: background 0.2s;
-}
-.dot.active { background: var(--coral); }
-.modal-body { padding: 28px 32px 32px; overflow-y: auto; }
-#modal-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800; font-size: 26px; margin-bottom: 12px;
-}
-#modal-desc { font-size: 15px; color: var(--muted); line-height: 1.7; }
+      /* ── MODAL ───────────────────────────────── */
+      #modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(5, 12, 20, 0.95);
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+      }
+      #modal-overlay.open {
+        display: flex;
+      }
+      .modal {
+        background: var(--navy2);
+        border-radius: 12px;
+        overflow: hidden;
+        max-width: 860px;
+        width: 100%;
+        border: 1px solid var(--border);
+        position: relative;
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .modal-close {
+        position: absolute;
+        top: 16px;
+        right: 20px;
+        font-size: 22px;
+        color: var(--muted);
+        cursor: pointer;
+        background: none;
+        border: none;
+        z-index: 10;
+        line-height: 1;
+      }
+      .modal-close:hover {
+        color: var(--white);
+      }
+      .modal-slideshow {
+        position: relative;
+        height: 420px;
+        flex-shrink: 0;
+        background: #060e17;
+        overflow: hidden;
+      }
+      #modal-slide-content {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .slide-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 16px;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .slide-btn {
+        pointer-events: all;
+        background: rgba(13, 27, 42, 0.8);
+        border: 1px solid var(--border);
+        color: var(--white);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.2s;
+      }
+      .slide-btn:hover {
+        background: var(--coral);
+        border-color: var(--coral);
+      }
+      #modal-dots {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 7px;
+        z-index: 2;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #2a4060;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .dot.active {
+        background: var(--coral);
+      }
+      .modal-body {
+        padding: 28px 32px 32px;
+        overflow-y: auto;
+      }
+      #modal-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: 26px;
+        margin-bottom: 12px;
+      }
+      #modal-desc {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
 
-/* ── CONTACT ─────────────────────────────── */
-#contact { background: var(--navy2); border-top: 1px solid var(--border); }
-#contact .section-eyebrow { color: var(--yellow); }
-#contact .section-eyebrow::before { background: var(--yellow); }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-.contact-intro { font-size: 18px; color: var(--muted); line-height: 1.7; }
-.contact-intro strong { color: var(--white); }
-.contact-links { display: flex; flex-direction: column; }
-.contact-item {
-  display: flex; align-items: center; gap: 20px;
-  padding: 20px 0; border-bottom: 1px solid var(--border);
-}
-.contact-icon {
-  width: 44px; height: 44px; border-radius: 8px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-}
-.contact-detail-label {
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 3px;
-}
-.contact-detail-value { font-size: 15px; font-weight: 600; color: var(--white); }
-a.contact-detail-value:hover { color: var(--yellow); }
+      /* ── CONTACT ─────────────────────────────── */
+      #contact {
+        background: var(--navy2);
+        border-top: 1px solid var(--border);
+      }
+      #contact .section-eyebrow {
+        color: var(--yellow);
+      }
+      #contact .section-eyebrow::before {
+        background: var(--yellow);
+      }
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .contact-intro {
+        font-size: 18px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      .contact-intro strong {
+        color: var(--white);
+      }
+      .contact-links {
+        display: flex;
+        flex-direction: column;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .contact-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .contact-detail-label {
+        font-size: 11px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 3px;
+      }
+      .contact-detail-value {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--white);
+      }
+      a.contact-detail-value:hover {
+        color: var(--yellow);
+      }
 
-/* ── FOOTER ──────────────────────────────── */
-#footer {
-  background: #060e17; border-top: 1px solid var(--border);
-  padding: 32px 60px;
-  display: flex; justify-content: space-between; align-items: center;
-}
-.footer-name {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 800; font-size: 16px; color: var(--muted);
-}
-.footer-name span { color: var(--coral); }
-.footer-copy { font-size: 13px; color: #2a4060; }
+      /* ── FOOTER ──────────────────────────────── */
+      #footer {
+        background: #060e17;
+        border-top: 1px solid var(--border);
+        padding: 32px 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer-name {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .footer-name span {
+        color: var(--coral);
+      }
+      .footer-copy {
+        font-size: 13px;
+        color: #2a4060;
+      }
 
-/* ── PRINT ───────────────────────────────── */
-@media print {
-  #nav, #modal-overlay, .hero-scroll-hint,
-  .work-card.placeholder, .hero-cta { display: none !important; }
+      /* ── PRINT ───────────────────────────────── */
+      @media print {
+        #nav,
+        #modal-overlay,
+        .hero-scroll-hint,
+        .work-card.placeholder,
+        .hero-cta {
+          display: none !important;
+        }
 
-  body { background: #fff !important; color: #111 !important; }
+        body {
+          background: #fff !important;
+          color: #111 !important;
+        }
 
-  section, #reel, #footer {
-    background: #fff !important;
-    border-color: #ddd !important;
-    padding: 40px 40px !important;
-  }
+        section,
+        #reel,
+        #footer {
+          background: #fff !important;
+          border-color: #ddd !important;
+          padding: 40px 40px !important;
+        }
 
-  .section-title, #modal-title, .hero-name,
-  .card-title, .exp-role, .footer-name { color: #111 !important; }
+        .section-title,
+        #modal-title,
+        .hero-name,
+        .card-title,
+        .exp-role,
+        .footer-name {
+          color: #111 !important;
+        }
 
-  .section-eyebrow, .detail-label, .award-eyebrow,
-  .exp-company, .contact-detail-label { color: #555 !important; }
+        .section-eyebrow,
+        .detail-label,
+        .award-eyebrow,
+        .exp-company,
+        .contact-detail-label {
+          color: #555 !important;
+        }
 
-  .about-bio, .exp-desc, .card-desc, #modal-desc,
-  .contact-intro, .detail-sub { color: #444 !important; }
+        .about-bio,
+        .exp-desc,
+        .card-desc,
+        #modal-desc,
+        .contact-intro,
+        .detail-sub {
+          color: #444 !important;
+        }
 
-  .detail-cell, .award-card, .work-card { background: #f5f5f5 !important; }
-  .card-thumb { background: #ddd !important; background-image: none !important; }
+        .detail-cell,
+        .award-card,
+        .work-card {
+          background: #f5f5f5 !important;
+        }
+        .card-thumb {
+          background: #ddd !important;
+          background-image: none !important;
+        }
 
-  .work-card, .exp-item, .detail-cell { break-inside: avoid; }
+        .work-card,
+        .exp-item,
+        .detail-cell {
+          break-inside: avoid;
+        }
 
-  .hero-name .accent-coral { color: var(--coral) !important; }
-  .hero-name .accent-yellow { color: #c49b00 !important; }
+        .hero-name .accent-coral {
+          color: var(--coral) !important;
+        }
+        .hero-name .accent-yellow {
+          color: #c49b00 !important;
+        }
 
-  #hero { min-height: auto; padding: 60px 40px 40px; }
-  .hero-bg-accent, .hero-bg-accent2 { display: none; }
-}
-</style>
-</head>
-<body>
+        #hero {
+          min-height: auto;
+          padding: 60px 40px 40px;
+        }
+        .hero-bg-accent,
+        .hero-bg-accent2 {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav"></nav>
 
-<nav id="nav"></nav>
+    <section id="hero" class="hero"></section>
 
-<section id="hero" class="hero"></section>
+    <section id="about"></section>
 
-<section id="about"></section>
+    <section id="experience"></section>
 
-<section id="experience"></section>
+    <section id="reel" class="work-section"></section>
 
-<section id="reel" class="work-section"></section>
+    <section id="motion" class="work-section"></section>
 
-<section id="motion" class="work-section"></section>
+    <section id="graphic" class="work-section"></section>
 
-<section id="graphic" class="work-section"></section>
+    <section id="social" class="work-section"></section>
 
-<section id="social" class="work-section"></section>
+    <section id="contact"></section>
 
-<section id="contact"></section>
+    <footer id="footer"></footer>
 
-<footer id="footer"></footer>
-
-<!-- Modal -->
-<div id="modal-overlay" onclick="handleOverlayClick(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div class="modal-slideshow">
-      <div id="modal-slide-content"></div>
-      <div class="slide-nav">
-        <button class="slide-btn" onclick="prevSlide()">‹</button>
-        <button class="slide-btn" onclick="nextSlide()">›</button>
-      </div>
-      <div id="modal-dots"></div>
-    </div>
-    <div class="modal-body">
-      <div id="modal-title"></div>
-      <div id="modal-desc"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-/* ═══════════════════════════════════════════════════════════════
-   PORTFOLIO DATA
-   Edit everything in this block. Do not touch anything below it.
-═══════════════════════════════════════════════════════════════ */
-const PORTFOLIO_DATA = {
-  // Your name — shown in nav, hero, footer
-  name: { first: 'Sofia', middle: 'Garcia', last: 'Katz' },
-  // Your job title
-  role: 'Senior Multimedia Designer',
-  // Your city — shown in hero eyebrow and footer
-  location: 'Buenos Aires, Argentina',
-  // One-line tagline shown under your name in the hero
-  tagline: 'Senior Multimedia Designer crafting bold identities, motion, and social experiences that move people.',
-
-  about: {
-    // Your bio — HTML allowed (use <strong> for bold, <br> for line breaks)
-    bio: 'I am a multimedia designer based in Argentina, specialized in motion graphics with 6 years of experience bringing brands, stories, and ideas to life through movement. My background spans across industries, from 3D for video games and VFX for TV productions, to motion graphics for advertising campaigns and social media. My process starts with a question and ends with something that surprises even me. I thrive in creative teams where ideas collide and evolve, and I bring that same energy to every frame I design.',
-
-    details: {
-      basedIn:    { value: 'Buenos Aires',        sub: 'Argentina' },
-      education:  { value: 'Multimedia Designer', sub: 'Escuela Da Vinci' },
-      specialties:{ value: 'Motion · Design',     sub: 'Video · Social Media' },
-      tools:      { value: 'Ae · Pr · Ai · Ps',  sub: 'Figma · Cinema 4D' },
-    },
-
-    award: {
-      // Path to award logo image, e.g. 'media/award-logo.png'. Leave '' for placeholder icon.
-      logo: '',
-      title: 'Creative LIAisons Argentina 2025',
-      subtitle: 'First place with te campaign <i>Preguntas Reales </i> for Faro Digital ',
-      // Full URL to the award page — opens in new tab
-      url: '#',  // Replace with the actual URL to the award page
-    },
-  },
-
-  // Work history — add or remove entries as needed
-  experience: [
-    {
-      period: '2025 — Present',
-      role: 'Senior Multimedia Designer',
-      company: 'El Observasdor · Buenos Aires',
-      description: 'lead the ideation and production of video formats — handling everything from concept and editing to design, motion graphics, and AI-integrated workflows. My work shapes how the brand communicates across digital platforms, blending journalistic clarity with creative ambition.',
-    },
-    {
-      period: '2023 — 2024',
-      role: 'Senior Multimedia Designer',
-      company: 'La Nacion · Buenos Aires',
-      description: 'Tasked with reimagining how one of Argentina's most iconic media brands communicates visually. At La Nación, I led the creative development of new content formats, designed motion graphics, and pioneered augmented reality projects that pushed the outlet beyond conventional storytelling. A role defined by creative ambition and a mandate to innovate.',
-    },
-    {
-      period: '2023 — 2023',
-      role: '3d Generalist',
-      company: 'Olive World · Buenos Aires',
-      description: 'As 3D Generalist on Olive, I owned the complete asset creation pipeline, designing, modeling and texturing 3D elements that brought the game's world to life. Beyond technical execution, I contributed to shaping the overall art direction, ensuring every asset felt intentional and consistent with the game's visual language.',
-    },
-    {
-      period: '2022 — 2022',
-      role: 'VFX Coordinator',
-      company: 'LASP · Buenos Aires',
-      description: 'Helped bring a Disney production to life from Argentina. As VFX Coordinator for Chueco at LASP, I led the department responsible for delivering the show's visual effects, managing the team, coordinating workflows, and maintaining the production quality expected of a major international Disney title. A role that demanded both creative vision and operational precision',
-    },
-    {
-      period: '2021 — 2022',
-      role: 'Motion Graphic Designer',
-      company: 'Lavaworks · Buenos Aires',
-      description: 'Designed and animated motion graphics content across a wide range of industries and formats, from brand campaigns and TV spots to social media content and advertising. Working in an agency environment sharpened my ability to adapt my style quickly, deliver under tight deadlines, and maintain creative quality across diverse clients and platforms.',
-    },
-  ],
-
-  reel: {
-    // Your showreel. Options:
-    //   Local file:  'media/reel.mp4'
-    //   YouTube URL: 'https://www.youtube.com/watch?v=YOUR_ID'
-    //   Vimeo URL:   'https://vimeo.com/YOUR_ID'
-    //   Leave ''     to show the placeholder    
-    
-    src: 'https://youtu.be/7r84ngO23ds ' ,
-    // Video duration shown as a badge (optional). Leave '' to hide.
-    duration: '',
-  },
-
-  work: {
-    motion: {
-      sectionTitle: 'Motion Graphics\n& Video Editing',
-      // Add your pieces below. Each piece can have multiple media items.
-      // thumbnail: path to the image shown on the card (optional — uses first media item if blank)
-      // media: array of { type: 'image'|'video', src: 'path or URL' }
-      pieces: [
-        // Example — uncomment and fill in with your real work:
-        // {
-        //   title: 'Brand Identity Reel 2024',
-        //   description: 'Full motion identity for a BA fashion label.',
-        //   thumbnail: 'media/motion/brand-reel-thumb.jpg',
-        //   media: [
-        //     { type: 'video', src: 'media/motion/brand-reel.mp4' },
-        //     { type: 'image', src: 'media/motion/brand-reel-still.jpg' },
-        //   ],
-        // },
-      ],
-    },
-    graphic: {
-      sectionTitle: 'Graphic Design',
-      pieces: [
-          {title: 'Ethel Cain posters',
-          description: 'Poster design inspired in Ethel Cain work.',
-           thumbnail: 'Desktop/WEB/UNO.png',
-           media: [
-             { type: 'image', src: 'Desktop/WEB/UNO.png' },
-             { type: 'image', src: 'Desktop/WEB/UNO.png' },
-             { type: 'image', src: 'Desktop/WEB/UNO.png' },
-             { type: 'image', src: 'Desktop/WEB/UNO.png' },
-      ],
-    },
-    ],
-    },
-    social: {
-      sectionTitle: 'Social Media',
-      pieces: [
-        {title: 'Ethel Cain posters',
-          description: 'Poster design inspired in Ethel Cain work.',
-           thumbnail: 'Desktop/WEB/UNO.png',
-           media: [
-             { type: 'image', src: 'media\social\Hacelo Girar.mp4' },
-            
-      ],
-    },
-      ],
-    },
-  },
-
-  contact: {
-    // HTML allowed in intro
-    intro: 'Interested in working together? I\'m available for <strong>freelance projects</strong>, <strong>collaborations</strong>, and <strong>full-time opportunities</strong>.<br><br>Let\'s create something bold.',
-    email:    { label: 'sgarciakatz@gmail.com',             url: 'mailto:sgarciakatz@gmail.com' },
-    linkedin: { label: 'linkedin.com/in/sofia-garcia-katz',    url: 'https://www.linkedin.com/in/sofia-garcia-katz/?locale=en' },
-    instagram:{ label: '@gekadesign',                   url: 'https://www.instagram.com/geka_design/' },
-    location: 'Buenos Aires, Argentina',
-  },
-};
-
-/* ═══════════════════════════════════════════════════════════════
-   RENDER FUNCTIONS — do not edit below this line
-═══════════════════════════════════════════════════════════════ */
-
-function renderNav() {
-  const d = PORTFOLIO_DATA;
-  const initials = d.name.first[0] + d.name.middle[0] + d.name.last[0];
-  document.getElementById('nav').innerHTML = `
-    <div class="nav-logo">${initials}<span>.</span></div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#reel">Reel</a>
-      <a href="#motion">Motion</a>
-      <a href="#graphic">Graphic Design</a>
-      <a href="#social">Social Media</a>
-      <a href="#contact">Contact</a>
-    </div>
-  `;
-}
-
-function renderHero() {
-  const d = PORTFOLIO_DATA;
-  document.getElementById('hero').innerHTML = `
-    <div class="hero-bg-accent"></div>
-    <div class="hero-bg-accent2"></div>
-    <div class="hero-eyebrow">${d.location}</div>
-    <div class="hero-name">
-      ${d.name.first}<br>
-      <span class="accent-coral">${d.name.middle}</span><br>
-      <span class="accent-yellow">${d.name.last}</span>
-    </div>
-    <p class="hero-tagline">${d.tagline}</p>
-    <div class="hero-cta">
-      <a href="#reel" class="btn-primary">Watch My Reel</a>
-      <a href="#contact" class="btn-outline">Get in Touch</a>
-    </div>
-    <div class="hero-scroll-hint">Scroll to explore</div>
-  `;
-}
-
-function renderAbout() {
-  const d = PORTFOLIO_DATA;
-  const det = d.about.details;
-  const aw  = d.about.award;
-
-  const logoHtml = aw.logo
-    ? `<img src="${aw.logo}" alt="Award logo" style="width:52px;height:52px;object-fit:contain;border-radius:4px;">`
-    : `<div class="award-logo-placeholder">🏅</div><div class="award-logo-hint">Award<br>logo</div>`;
-
-  document.getElementById('about').innerHTML = `
-    <div class="section-eyebrow">About Me</div>
-    <div class="section-title">Who I Am</div>
-    <div class="about-grid">
-      <div class="about-bio">${d.about.bio}</div>
-      <div class="about-sidebar">
-        <div class="detail-grid">
-          <div class="detail-cell" style="border-top-color:var(--coral)">
-            <div class="detail-label" style="color:var(--coral)">Based in</div>
-            <div class="detail-value">${det.basedIn.value}</div>
-            <div class="detail-sub">${det.basedIn.sub}</div>
+    <!-- Modal -->
+    <div id="modal-overlay" onclick="handleOverlayClick(event)">
+      <div class="modal">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="modal-slideshow">
+          <div id="modal-slide-content"></div>
+          <div class="slide-nav">
+            <button class="slide-btn" onclick="prevSlide()">‹</button>
+            <button class="slide-btn" onclick="nextSlide()">›</button>
           </div>
-          <div class="detail-cell" style="border-top-color:var(--sky)">
-            <div class="detail-label" style="color:var(--sky)">Education</div>
-            <div class="detail-value">${det.education.value}</div>
-            <div class="detail-sub">${det.education.sub}</div>
-          </div>
-          <div class="detail-cell" style="border-top-color:var(--violet)">
-            <div class="detail-label" style="color:var(--violet)">Specialties</div>
-            <div class="detail-value">${det.specialties.value}</div>
-            <div class="detail-sub">${det.specialties.sub}</div>
-          </div>
-          <div class="detail-cell" style="border-top-color:var(--muted)">
-            <div class="detail-label" style="color:var(--muted)">Tools</div>
-            <div class="detail-value">${det.tools.value}</div>
-            <div class="detail-sub">${det.tools.sub}</div>
-          </div>
+          <div id="modal-dots"></div>
         </div>
-        <div class="award-card">
-          <div class="award-card-inner">
-            <div class="award-logo">${logoHtml}</div>
-            <div class="award-content">
-              <div class="award-eyebrow">Award</div>
-              <div class="award-title">${aw.title}</div>
-              <div class="award-sub">${aw.subtitle}</div>
-              <a class="award-link" href="${aw.url}" target="_blank" rel="noopener">View Award</a>
+        <div class="modal-body">
+          <div id="modal-title"></div>
+          <div id="modal-desc"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      /* ═══════════════════════════════════════════════════════════════
+         PORTFOLIO DATA
+         Edit everything in this block. Do not touch anything below it.
+      ═══════════════════════════════════════════════════════════════ */
+      const PORTFOLIO_DATA = {
+        // Your name — shown in nav, hero, footer
+        name: { first: 'Sofia', middle: 'Garcia', last: 'Katz' },
+        // Your job title
+        role: 'Senior Multimedia Designer',
+        // Your city — shown in hero eyebrow and footer
+        location: 'Buenos Aires, Argentina',
+        // One-line tagline shown under your name in the hero
+        tagline: 'Senior Multimedia Designer crafting bold identities, motion, and social experiences that move people.',
+
+        about: {
+          // Your bio — HTML allowed (use <strong> for bold, <br> for line breaks)
+          bio: 'I am a multimedia designer based in Argentina, specialized in motion graphics with 6 years of experience bringing brands, stories, and ideas to life through movement. My background spans across industries, from 3D for video games and VFX for TV productions, to motion graphics for advertising campaigns and social media. My process starts with a question and ends with something that surprises even me. I thrive in creative teams where ideas collide and evolve, and I bring that same energy to every frame I design.',
+
+          details: {
+            basedIn:    { value: 'Buenos Aires',        sub: 'Argentina' },
+            education:  { value: 'Multimedia Designer', sub: 'Escuela Da Vinci' },
+            specialties:{ value: 'Motion · Design',     sub: 'Video · Social Media' },
+            tools:      { value: 'Ae · Pr · Ai · Ps',  sub: 'Figma · Cinema 4D' },
+          },
+
+          award: {
+            // Path to award logo image, e.g. 'media/award-logo.png'. Leave '' for placeholder icon.
+            logo: '',
+            title: 'Creative LIAisons Argentina 2025',
+            subtitle: 'First place with te campaign <i>Preguntas Reales </i> for Faro Digital ',
+            // Full URL to the award page — opens in new tab
+            url: '#',  // Replace with the actual URL to the award page
+          },
+        },
+
+        // Work history — add or remove entries as needed
+        experience: [
+          {
+            period: '2025 — Present',
+            role: 'Senior Multimedia Designer',
+            company: 'El Observasdor · Buenos Aires',
+            description: 'lead the ideation and production of video formats — handling everything from concept and editing to design, motion graphics, and AI-integrated workflows. My work shapes how the brand communicates across digital platforms, blending journalistic clarity with creative ambition.',
+          },
+          {
+            period: '2023 — 2024',
+            role: 'Senior Multimedia Designer',
+            company: 'La Nacion · Buenos Aires',
+            description: 'Tasked with reimagining how one of Argentina's most iconic media brands communicates visually. At La Nación, I led the creative development of new content formats, designed motion graphics, and pioneered augmented reality projects that pushed the outlet beyond conventional storytelling. A role defined by creative ambition and a mandate to innovate.',
+          },
+          {
+            period: '2023 — 2023',
+            role: '3d Generalist',
+            company: 'Olive World · Buenos Aires',
+            description: 'As 3D Generalist on Olive, I owned the complete asset creation pipeline, designing, modeling and texturing 3D elements that brought the game's world to life. Beyond technical execution, I contributed to shaping the overall art direction, ensuring every asset felt intentional and consistent with the game's visual language.',
+          },
+          {
+            period: '2022 — 2022',
+            role: 'VFX Coordinator',
+            company: 'LASP · Buenos Aires',
+            description: 'Helped bring a Disney production to life from Argentina. As VFX Coordinator for Chueco at LASP, I led the department responsible for delivering the show's visual effects, managing the team, coordinating workflows, and maintaining the production quality expected of a major international Disney title. A role that demanded both creative vision and operational precision',
+          },
+          {
+            period: '2021 — 2022',
+            role: 'Motion Graphic Designer',
+            company: 'Lavaworks · Buenos Aires',
+            description: 'Designed and animated motion graphics content across a wide range of industries and formats, from brand campaigns and TV spots to social media content and advertising. Working in an agency environment sharpened my ability to adapt my style quickly, deliver under tight deadlines, and maintain creative quality across diverse clients and platforms.',
+          },
+        ],
+
+        reel: {
+          // Your showreel. Options:
+          //   Local file:  'media/reel.mp4'
+          //   YouTube URL: 'https://www.youtube.com/watch?v=YOUR_ID'
+          //   Vimeo URL:   'https://vimeo.com/YOUR_ID'
+          //   Leave ''     to show the placeholder
+
+          src: 'https://youtu.be/7r84ngO23ds ' ,
+          // Video duration shown as a badge (optional). Leave '' to hide.
+          duration: '',
+        },
+
+        work: {
+                motion: {
+                  sectionTitle: "Motion Graphics\n& Video Editing",
+                  // Add your pieces below. Each piece can have multiple media items.
+                  // thumbnail: path to the image shown on the card (optional — uses first media item if blank)
+                  // media: array of { type: 'image'|'video', src: 'path or URL' }
+                  pieces: [
+                    {
+                      title: "TODO - BIMO",
+                      description: "TODO - BIMO DESCRIPCION.",
+                      thumbnail: "media/motion/BIMO Billetera.jpg",
+                      media: [
+                        { type: "video", src: "media/motion/BIMO Billetera.mp4" },
+                      ],
+                    },
+                    {
+                      title: "TODO - BALANCE",
+                      description: "TODO - BALANCE DESCRIPCION.",
+                      thumbnail: "media/motion/BALANCE.jpg",
+                      media: [{ type: "video", src: "media/motion/BALANCE.mp4" }],
+                    },
+                    {
+                      title: "TODO - XERTICA",
+                      description: "TODO - XERTICA DESCRIPCION.",
+                      thumbnail: "media/motion/XERTICA Academy.jpg",
+                      media: [
+                        { type: "video", src: "media/motion/XERTICA Academy.mp4" },
+                      ],
+                    },
+                  ],
+                },
+                graphic: {
+                  sectionTitle: "Graphic Design",
+                  pieces: [
+                    {
+                      title: "Blanco Studio",
+                      description: "Design for Blanco Cowork Studio.",
+                      thumbnail: "media/graphic/blanco3.jpg",
+                      media: [
+                        { type: "image", src: "media/graphic/blanco3.jpg" },
+                        { type: "image", src: "media/graphic/blanco1.jpg" },
+                        { type: "image", src: "media/graphic/Blanco.jpg" },
+
+                      ],
+                    },
+                    {
+                      title: "Ethel Cain posters",
+                      description: "Poster design inspired in Ethel Cain work.",
+                      thumbnail: "media/graphic/UNO.png",
+                      media: [
+                        { type: "image", src: "media/graphic/UNO.png" },
+                        { type: "image", src: "media/graphic/SEGUNDO.png" },
+                        { type: "image", src: "media/graphic/Tres.png" },
+                        { type: "image", src: "media/graphic/todas.png" },
+                      ],
+                    },
+                    {
+                      title: "Tini concert",
+                      description: "Design the visuals for Tini concert.",
+                      thumbnail:
+                        "media/graphic/d193bac8-938f-4901-8222-eec103b9e8ef.jpeg",
+
+                      media: [
+                        {
+                          type: "image",
+                          src: "media/graphic/d193bac8-938f-4901-8222-eec103b9e8ef.jpeg",
+                        },
+                        { type: "image", src: "media/graphic/pantallas-tini.png" },
+                      ],
+                    },
+                  ],
+                },
+                social: {
+                  sectionTitle: "Social Media",
+                  pieces: [
+                    {
+                      title: "TODO - HaceloGirar",
+                      description: "TODO - HaceloGirar.",
+                      thumbnail: "media/social/HaceloGirar.mp4",
+                      media: [{ type: "video", src: "media/social/HaceloGirar.mp4" }],
+                    },
+                    {
+                      title: "TODO - Bauti",
+                      description: "TODO - Bauti Descripcion.",
+                      thumbnail: "media/social/Bauti.mp4",
+                      media: [{ type: "video", src: "media/social/Bauti.mp4" }],
+                    },
+                    {
+                      title: "TODO - Lemon",
+                      description: "TODO - Lemon Descripcion.",
+                      thumbnail: "media/social/Lemon.mp4",
+                      media: [{ type: "video", src: "media/social/Lemon.mp4" }],
+                    },
+                    {
+                      title: "TODO - SKYYVODKA",
+                      description: "TODO - SKYYVODKA Descripcion.",
+                      thumbnail: "media/social/SKYYVODKA.mp4",
+                      media: [{ type: "video", src: "media/social/SKYYVODKA.mp4" }],
+                    },
+                  ],
+                },
+              }
+
+        contact: {
+          // HTML allowed in intro
+          intro: 'Interested in working together? I\'m available for <strong>freelance projects</strong>, <strong>collaborations</strong>, and <strong>full-time opportunities</strong>.<br><br>Let\'s create something bold.',
+          email:    { label: 'sgarciakatz@gmail.com',             url: 'mailto:sgarciakatz@gmail.com' },
+          linkedin: { label: 'linkedin.com/in/sofia-garcia-katz',    url: 'https://www.linkedin.com/in/sofia-garcia-katz/?locale=en' },
+          instagram:{ label: '@gekadesign',                   url: 'https://www.instagram.com/geka_design/' },
+          location: 'Buenos Aires, Argentina',
+        },
+      };
+
+      /* ═══════════════════════════════════════════════════════════════
+         RENDER FUNCTIONS — do not edit below this line
+      ═══════════════════════════════════════════════════════════════ */
+
+      function renderNav() {
+        const d = PORTFOLIO_DATA;
+        const initials = d.name.first[0] + d.name.middle[0] + d.name.last[0];
+        document.getElementById('nav').innerHTML = `
+          <div class="nav-logo">${initials}<span>.</span></div>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#reel">Reel</a>
+            <a href="#motion">Motion</a>
+            <a href="#graphic">Graphic Design</a>
+            <a href="#social">Social Media</a>
+            <a href="#contact">Contact</a>
+          </div>
+        `;
+      }
+
+      function renderHero() {
+        const d = PORTFOLIO_DATA;
+        document.getElementById('hero').innerHTML = `
+          <div class="hero-bg-accent"></div>
+          <div class="hero-bg-accent2"></div>
+          <div class="hero-eyebrow">${d.location}</div>
+          <div class="hero-name">
+            ${d.name.first}<br>
+            <span class="accent-coral">${d.name.middle}</span><br>
+            <span class="accent-yellow">${d.name.last}</span>
+          </div>
+          <p class="hero-tagline">${d.tagline}</p>
+          <div class="hero-cta">
+            <a href="#reel" class="btn-primary">Watch My Reel</a>
+            <a href="#contact" class="btn-outline">Get in Touch</a>
+          </div>
+          <div class="hero-scroll-hint">Scroll to explore</div>
+        `;
+      }
+
+      function renderAbout() {
+        const d = PORTFOLIO_DATA;
+        const det = d.about.details;
+        const aw  = d.about.award;
+
+        const logoHtml = aw.logo
+          ? `<img src="${aw.logo}" alt="Award logo" style="width:52px;height:52px;object-fit:contain;border-radius:4px;">`
+          : `<div class="award-logo-placeholder">🏅</div><div class="award-logo-hint">Award<br>logo</div>`;
+
+        document.getElementById('about').innerHTML = `
+          <div class="section-eyebrow">About Me</div>
+          <div class="section-title">Who I Am</div>
+          <div class="about-grid">
+            <div class="about-bio">${d.about.bio}</div>
+            <div class="about-sidebar">
+              <div class="detail-grid">
+                <div class="detail-cell" style="border-top-color:var(--coral)">
+                  <div class="detail-label" style="color:var(--coral)">Based in</div>
+                  <div class="detail-value">${det.basedIn.value}</div>
+                  <div class="detail-sub">${det.basedIn.sub}</div>
+                </div>
+                <div class="detail-cell" style="border-top-color:var(--sky)">
+                  <div class="detail-label" style="color:var(--sky)">Education</div>
+                  <div class="detail-value">${det.education.value}</div>
+                  <div class="detail-sub">${det.education.sub}</div>
+                </div>
+                <div class="detail-cell" style="border-top-color:var(--violet)">
+                  <div class="detail-label" style="color:var(--violet)">Specialties</div>
+                  <div class="detail-value">${det.specialties.value}</div>
+                  <div class="detail-sub">${det.specialties.sub}</div>
+                </div>
+                <div class="detail-cell" style="border-top-color:var(--muted)">
+                  <div class="detail-label" style="color:var(--muted)">Tools</div>
+                  <div class="detail-value">${det.tools.value}</div>
+                  <div class="detail-sub">${det.tools.sub}</div>
+                </div>
+              </div>
+              <div class="award-card">
+                <div class="award-card-inner">
+                  <div class="award-logo">${logoHtml}</div>
+                  <div class="award-content">
+                    <div class="award-eyebrow">Award</div>
+                    <div class="award-title">${aw.title}</div>
+                    <div class="award-sub">${aw.subtitle}</div>
+                    <a class="award-link" href="${aw.url}" target="_blank" rel="noopener">View Award</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
+        `;
+      }
 
-function renderExperience() {
-  const d = PORTFOLIO_DATA;
-  const items = d.experience.map((e, i) => `
-    <div class="exp-item" ${i === d.experience.length - 1 ? 'style="border-bottom:none"' : ''}>
-      <div class="exp-period">${e.period}</div>
-      <div>
-        <div class="exp-role">${e.role}</div>
-        <div class="exp-company">${e.company}</div>
-        <div class="exp-desc">${e.description}</div>
-      </div>
-    </div>
-  `).join('');
-
-  document.getElementById('experience').innerHTML = `
-    <div class="section-eyebrow">Career</div>
-    <div class="section-title">Experience</div>
-    <div class="exp-list">${items}</div>
-  `;
-}
-
-/* ── Detect video embed type ───────────────── */
-function getEmbedInfo(src) {
-  if (!src) return null;
-  if (/youtube\.com\/watch\?v=/.test(src)) {
-    const id = new URL(src).searchParams.get('v');
-    return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
-  }
-  if (/youtu\.be\//.test(src)) {
-    const id = src.split('youtu.be/')[1].split('?')[0];
-    return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
-  }
-  if (/vimeo\.com\/(\d+)/.test(src)) {
-    const id = src.match(/vimeo\.com\/(\d+)/)[1];
-    return { type: 'iframe', url: `https://player.vimeo.com/video/${id}` };
-  }
-  return { type: 'video', url: src };
-}
-
-function renderReel() {
-  const reel = PORTFOLIO_DATA.reel;
-  const embed = getEmbedInfo(reel.src);
-  let playerHtml;
-
-  if (!embed) {
-    playerHtml = `
-      <div class="reel-play-wrap">
-        <div class="reel-play-btn">▶</div>
-        <div class="reel-play-label">Watch Showreel</div>
-      </div>`;
-  } else if (embed.type === 'iframe') {
-    playerHtml = `<iframe src="${embed.url}" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
-  } else {
-    playerHtml = `<video src="${embed.url}" controls style="width:100%;height:100%;"></video>`;
-  }
-
-  const durationHtml = reel.duration
-    ? `<div class="reel-duration">${reel.duration}</div>` : '';
-
-  document.getElementById('reel').innerHTML = `
-    <div class="section-eyebrow">Showreel</div>
-    <div class="reel-heading">My <span>Reel</span></div>
-    <div class="reel-container">
-      ${playerHtml}
-      ${durationHtml}
-    </div>
-  `;
-}
-
-function renderWorkSections() {
-  const sections = [
-    { key: 'motion',  id: 'motion',  data: PORTFOLIO_DATA.work.motion },
-    { key: 'graphic', id: 'graphic', data: PORTFOLIO_DATA.work.graphic },
-    { key: 'social',  id: 'social',  data: PORTFOLIO_DATA.work.social },
-  ];
-
-  const MIN_CELLS = 6;
-
-  sections.forEach(({ key, id, data }) => {
-    const pieces = data.pieces;
-
-    const cardHtml = pieces.map((piece, i) => {
-      const firstMedia = piece.media && piece.media[0];
-      const isVideo    = firstMedia && firstMedia.type === 'video';
-      const thumbSrc   = piece.thumbnail || (firstMedia ? firstMedia.src : '');
-      const thumbStyle = thumbSrc
-        ? `background-image:url('${thumbSrc}');background-size:cover;background-position:center;`
-        : '';
-      const count = piece.media ? piece.media.length : 0;
-
-      return `
-        <div class="work-card" onclick="openModal('${key}', ${i})">
-          <div class="card-thumb" style="${thumbStyle}">
-            ${isVideo ? '<div class="card-play">▶</div>' : ''}
-            ${count > 0 ? `<div class="card-thumb-count">⊞ ${count} media</div>` : ''}
+      function renderExperience() {
+        const d = PORTFOLIO_DATA;
+        const items = d.experience.map((e, i) => `
+          <div class="exp-item" ${i === d.experience.length - 1 ? 'style="border-bottom:none"' : ''}>
+            <div class="exp-period">${e.period}</div>
+            <div>
+              <div class="exp-role">${e.role}</div>
+              <div class="exp-company">${e.company}</div>
+              <div class="exp-desc">${e.description}</div>
+            </div>
           </div>
-          <div class="card-body">
-            <div class="card-title">${piece.title}</div>
-            <div class="card-desc">${piece.description}</div>
-            <div class="card-hover-hint">Click to view</div>
+        `).join('');
+
+        document.getElementById('experience').innerHTML = `
+          <div class="section-eyebrow">Career</div>
+          <div class="section-title">Experience</div>
+          <div class="exp-list">${items}</div>
+        `;
+      }
+
+      /* ── Detect video embed type ───────────────── */
+      function getEmbedInfo(src) {
+        if (!src) return null;
+        if (/youtube\.com\/watch\?v=/.test(src)) {
+          const id = new URL(src).searchParams.get('v');
+          return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
+        }
+        if (/youtu\.be\//.test(src)) {
+          const id = src.split('youtu.be/')[1].split('?')[0];
+          return { type: 'iframe', url: `https://www.youtube.com/embed/${id}` };
+        }
+        if (/vimeo\.com\/(\d+)/.test(src)) {
+          const id = src.match(/vimeo\.com\/(\d+)/)[1];
+          return { type: 'iframe', url: `https://player.vimeo.com/video/${id}` };
+        }
+        return { type: 'video', url: src };
+      }
+
+      function renderReel() {
+        const reel = PORTFOLIO_DATA.reel;
+        const embed = getEmbedInfo(reel.src);
+        let playerHtml;
+
+        if (!embed) {
+          playerHtml = `
+            <div class="reel-play-wrap">
+              <div class="reel-play-btn">▶</div>
+              <div class="reel-play-label">Watch Showreel</div>
+            </div>`;
+        } else if (embed.type === 'iframe') {
+          playerHtml = `<iframe src="${embed.url}" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
+        } else {
+          playerHtml = `<video src="${embed.url}" controls style="width:100%;height:100%;"></video>`;
+        }
+
+        const durationHtml = reel.duration
+          ? `<div class="reel-duration">${reel.duration}</div>` : '';
+
+        document.getElementById('reel').innerHTML = `
+          <div class="section-eyebrow">Showreel</div>
+          <div class="reel-heading">My <span>Reel</span></div>
+          <div class="reel-container">
+            ${playerHtml}
+            ${durationHtml}
           </div>
-        </div>`;
-    }).join('');
+        `;
+      }
 
-    const placeholderCount = Math.max(0, MIN_CELLS - pieces.length);
-    const placeholderHtml  = Array(placeholderCount).fill(`
-      <div class="work-card placeholder">
-        <div class="placeholder-plus">+</div>
-        <div class="placeholder-text">Add work piece</div>
-      </div>`).join('');
+      function renderWorkSections() {
+        const sections = [
+          { key: 'motion',  id: 'motion',  data: PORTFOLIO_DATA.work.motion },
+          { key: 'graphic', id: 'graphic', data: PORTFOLIO_DATA.work.graphic },
+          { key: 'social',  id: 'social',  data: PORTFOLIO_DATA.work.social },
+        ];
 
-    const titleHtml = data.sectionTitle.replaceAll('\n', '<br>');
+        const MIN_CELLS = 6;
 
-    document.getElementById(id).innerHTML = `
-      <div class="section-eyebrow">Featured Work</div>
-      <div class="section-title">${titleHtml}</div>
-      <div class="work-grid">${cardHtml}${placeholderHtml}</div>
-    `;
-  });
-}
+        sections.forEach(({ key, id, data }) => {
+          const pieces = data.pieces;
 
-/* ── Modal ─────────────────────────────────── */
-let _modalPieces = [];
-let _modalSlide  = 0;
+          const cardHtml = pieces.map((piece, i) => {
+            const firstMedia = piece.media && piece.media[0];
+            const isVideo    = firstMedia && firstMedia.type === 'video';
+            const thumbSrc   = piece.thumbnail || (firstMedia ? firstMedia.src : '');
+            const thumbStyle = thumbSrc
+              ? `background-image:url('${thumbSrc}');background-size:cover;background-position:center;`
+              : '';
+            const count = piece.media ? piece.media.length : 0;
 
-function openModal(sectionKey, pieceIndex) {
-  const piece     = PORTFOLIO_DATA.work[sectionKey].pieces[pieceIndex];
-  _modalPieces    = piece.media || [];
-  _modalSlide     = 0;
+            return `
+              <div class="work-card" onclick="openModal('${key}', ${i})">
+                <div class="card-thumb" style="${thumbStyle}">
+                  ${isVideo ? '<div class="card-play">▶</div>' : ''}
+                  ${count > 0 ? `<div class="card-thumb-count">⊞ ${count} media</div>` : ''}
+                </div>
+                <div class="card-body">
+                  <div class="card-title">${piece.title}</div>
+                  <div class="card-desc">${piece.description}</div>
+                  <div class="card-hover-hint">Click to view</div>
+                </div>
+              </div>`;
+          }).join('');
 
-  document.getElementById('modal-title').textContent = piece.title;
-  document.getElementById('modal-desc').textContent  = piece.description;
+          const placeholderCount = Math.max(0, MIN_CELLS - pieces.length);
+          const placeholderHtml  = Array(placeholderCount).fill(`
+            <div class="work-card placeholder">
+              <div class="placeholder-plus">+</div>
+              <div class="placeholder-text">Add work piece</div>
+            </div>`).join('');
 
-  // Build dots
-  const dotsEl = document.getElementById('modal-dots');
-  dotsEl.innerHTML = _modalPieces.map((_, i) =>
-    `<div class="dot${i === 0 ? ' active' : ''}" onclick="goToSlide(${i})"></div>`
-  ).join('');
+          const titleHtml = data.sectionTitle.replaceAll('\n', '<br>');
 
-  // Hide nav arrows when only 1 slide
-  document.querySelector('.slide-nav').style.display =
-    _modalPieces.length > 1 ? 'flex' : 'none';
+          document.getElementById(id).innerHTML = `
+            <div class="section-eyebrow">Featured Work</div>
+            <div class="section-title">${titleHtml}</div>
+            <div class="work-grid">${cardHtml}${placeholderHtml}</div>
+          `;
+        });
+      }
 
-  _renderSlide(0);
-  document.getElementById('modal-overlay').classList.add('open');
-}
+      /* ── Modal ─────────────────────────────────── */
+      let _modalPieces = [];
+      let _modalSlide  = 0;
 
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-  document.getElementById('modal-slide-content').innerHTML = '';
-}
+      function openModal(sectionKey, pieceIndex) {
+        const piece     = PORTFOLIO_DATA.work[sectionKey].pieces[pieceIndex];
+        _modalPieces    = piece.media || [];
+        _modalSlide     = 0;
 
-function handleOverlayClick(e) {
-  if (e.target === document.getElementById('modal-overlay')) closeModal();
-}
+        document.getElementById('modal-title').textContent = piece.title;
+        document.getElementById('modal-desc').textContent  = piece.description;
 
-function goToSlide(n) {
-  _modalSlide = (n + _modalPieces.length) % _modalPieces.length;
-  _renderSlide(_modalSlide);
-  document.querySelectorAll('#modal-dots .dot').forEach((dot, i) =>
-    dot.classList.toggle('active', i === _modalSlide)
-  );
-}
+        // Build dots
+        const dotsEl = document.getElementById('modal-dots');
+        dotsEl.innerHTML = _modalPieces.map((_, i) =>
+          `<div class="dot${i === 0 ? ' active' : ''}" onclick="goToSlide(${i})"></div>`
+        ).join('');
 
-function nextSlide() {
-  if (!document.getElementById('modal-overlay').classList.contains('open')) return;
-  goToSlide(_modalSlide + 1);
-}
+        // Hide nav arrows when only 1 slide
+        document.querySelector('.slide-nav').style.display =
+          _modalPieces.length > 1 ? 'flex' : 'none';
 
-function prevSlide() {
-  if (!document.getElementById('modal-overlay').classList.contains('open')) return;
-  goToSlide(_modalSlide - 1);
-}
+        _renderSlide(0);
+        document.getElementById('modal-overlay').classList.add('open');
+      }
 
-function _renderSlide(n) {
-  const media   = _modalPieces[n];
-  const content = document.getElementById('modal-slide-content');
-  if (!media) {
-    content.innerHTML = '<p style="color:#8AA0B4;font-size:14px;letter-spacing:1px;">No media added yet</p>';
-    return;
-  }
+      function closeModal() {
+        document.getElementById('modal-overlay').classList.remove('open');
+        document.getElementById('modal-slide-content').innerHTML = '';
+      }
 
-  if (media.type === 'image') {
-    content.innerHTML = `<img src="${media.src}" alt=""
-      style="width:100%;height:100%;object-fit:contain;">`;
-    return;
-  }
+      function handleOverlayClick(e) {
+        if (e.target === document.getElementById('modal-overlay')) closeModal();
+      }
 
-  // video type
-  const embed = getEmbedInfo(media.src);
-  if (!embed) { content.innerHTML = ''; return; }
+      function goToSlide(n) {
+        _modalSlide = (n + _modalPieces.length) % _modalPieces.length;
+        _renderSlide(_modalSlide);
+        document.querySelectorAll('#modal-dots .dot').forEach((dot, i) =>
+          dot.classList.toggle('active', i === _modalSlide)
+        );
+      }
 
-  if (embed.type === 'iframe') {
-    content.innerHTML = `<iframe src="${embed.url}"
-      style="width:100%;height:100%;border:none;"
-      allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
-  } else {
-    content.innerHTML = `<video src="${embed.url}" controls
-      style="width:100%;height:100%;max-height:420px;background:#000;"></video>`;
-  }
-}
+      function nextSlide() {
+        if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+        goToSlide(_modalSlide + 1);
+      }
 
-function renderContact() {
-  const c = PORTFOLIO_DATA.contact;
-  document.getElementById('contact').innerHTML = `
-    <div class="section-eyebrow">Get in Touch</div>
-    <div class="section-title">Contact</div>
-    <div class="contact-grid">
-      <p class="contact-intro">${c.intro}</p>
-      <div class="contact-links">
-        <div class="contact-item">
-          <div class="contact-icon" style="background:#FF6B6B22;">📧</div>
-          <div>
-            <div class="contact-detail-label">Email</div>
-            <a class="contact-detail-value" href="${c.email.url}">${c.email.label}</a>
+      function prevSlide() {
+        if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+        goToSlide(_modalSlide - 1);
+      }
+
+      function _renderSlide(n) {
+        const media   = _modalPieces[n];
+        const content = document.getElementById('modal-slide-content');
+        if (!media) {
+          content.innerHTML = '<p style="color:#8AA0B4;font-size:14px;letter-spacing:1px;">No media added yet</p>';
+          return;
+        }
+
+        if (media.type === 'image') {
+          content.innerHTML = `<img src="${media.src}" alt=""
+            style="width:100%;height:100%;object-fit:contain;">`;
+          return;
+        }
+
+        // video type
+        const embed = getEmbedInfo(media.src);
+        if (!embed) { content.innerHTML = ''; return; }
+
+        if (embed.type === 'iframe') {
+          content.innerHTML = `<iframe src="${embed.url}"
+            style="width:100%;height:100%;border:none;"
+            allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>`;
+        } else {
+          content.innerHTML = `<video src="${embed.url}" controls
+            style="width:100%;height:100%;max-height:420px;background:#000;"></video>`;
+        }
+      }
+
+      function renderContact() {
+        const c = PORTFOLIO_DATA.contact;
+        document.getElementById('contact').innerHTML = `
+          <div class="section-eyebrow">Get in Touch</div>
+          <div class="section-title">Contact</div>
+          <div class="contact-grid">
+            <p class="contact-intro">${c.intro}</p>
+            <div class="contact-links">
+              <div class="contact-item">
+                <div class="contact-icon" style="background:#FF6B6B22;">📧</div>
+                <div>
+                  <div class="contact-detail-label">Email</div>
+                  <a class="contact-detail-value" href="${c.email.url}">${c.email.label}</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon" style="background:#6BCBEA22;">💼</div>
+                <div>
+                  <div class="contact-detail-label">LinkedIn</div>
+                  <a class="contact-detail-value" href="${c.linkedin.url}" target="_blank" rel="noopener">${c.linkedin.label}</a>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon" style="background:#C77DFF22;">📸</div>
+                <div>
+                  <div class="contact-detail-label">Instagram</div>
+                  <a class="contact-detail-value" href="${c.instagram.url}" target="_blank" rel="noopener">${c.instagram.label}</a>
+                </div>
+              </div>
+              <div class="contact-item" style="border-bottom:none;">
+                <div class="contact-icon" style="background:#FFD93D22;">📍</div>
+                <div>
+                  <div class="contact-detail-label">Location</div>
+                  <div class="contact-detail-value">${c.location}</div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon" style="background:#6BCBEA22;">💼</div>
-          <div>
-            <div class="contact-detail-label">LinkedIn</div>
-            <a class="contact-detail-value" href="${c.linkedin.url}" target="_blank" rel="noopener">${c.linkedin.label}</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon" style="background:#C77DFF22;">📸</div>
-          <div>
-            <div class="contact-detail-label">Instagram</div>
-            <a class="contact-detail-value" href="${c.instagram.url}" target="_blank" rel="noopener">${c.instagram.label}</a>
-          </div>
-        </div>
-        <div class="contact-item" style="border-bottom:none;">
-          <div class="contact-icon" style="background:#FFD93D22;">📍</div>
-          <div>
-            <div class="contact-detail-label">Location</div>
-            <div class="contact-detail-value">${c.location}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
+        `;
+      }
 
-function renderFooter() {
-  const d = PORTFOLIO_DATA;
-  document.getElementById('footer').innerHTML = `
-    <div class="footer-name">${d.name.first} ${d.name.middle} ${d.name.last}<span>.</span></div>
-    <div class="footer-copy">© ${new Date().getFullYear()} · ${d.role} · ${d.location}</div>
-  `;
-}
+      function renderFooter() {
+        const d = PORTFOLIO_DATA;
+        document.getElementById('footer').innerHTML = `
+          <div class="footer-name">${d.name.first} ${d.name.middle} ${d.name.last}<span>.</span></div>
+          <div class="footer-copy">© ${new Date().getFullYear()} · ${d.role} · ${d.location}</div>
+        `;
+      }
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderNav();
-  renderHero();
-  renderAbout();
-  renderExperience();
-  renderReel();
-  renderWorkSections();
-  renderContact();
-  renderFooter();
-});
+      document.addEventListener('DOMContentLoaded', () => {
+        renderNav();
+        renderHero();
+        renderAbout();
+        renderExperience();
+        renderReel();
+        renderWorkSections();
+        renderContact();
+        renderFooter();
+      });
 
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape')      closeModal();
-  if (e.key === 'ArrowRight')  nextSlide();
-  if (e.key === 'ArrowLeft')   prevSlide();
-});
-
-</script>
-</body>
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape')      closeModal();
+        if (e.key === 'ArrowRight')  nextSlide();
+        if (e.key === 'ArrowLeft')   prevSlide();
+      });
+    </script>
+  </body>
 </html>
