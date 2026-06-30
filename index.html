@@ -1177,26 +1177,29 @@
             pieces: [
               {
                 title: "Hacelo Girar",
-                description: "Series of 3 motion graphics videos produced for Natura's Hacelo Girar initiative",
-                thumbnail: "media/social/HaceloGirar.mp4",
+                description:
+                  "Series of 3 motion graphics videos produced for Natura's Hacelo Girar initiative",
+                thumbnail: "media/social/HaceloGirar.jpg",
                 media: [{ type: "video", src: "media/social/HaceloGirar.mp4" }],
               },
               {
                 title: "Mundial",
-                description: "Social media videos edited with the help of ia in the context of the World Cup 2026",
-                thumbnail: "media/social/Bauti.mp4",
+                description:
+                  "Social media videos edited with the help of ia in the context of the World Cup 2026",
+                thumbnail: "media/social/Bauti.jpg",
                 media: [{ type: "video", src: "media/social/Bauti.mp4" }],
               },
               {
                 title: "Lemoncash",
-                description: "3d animation for the launch of Lemoncash new credit card.",
-                thumbnail: "media/social/Lemon.mp4",
+                description:
+                  "3d animation for the launch of Lemoncash new credit card.",
+                thumbnail: "media/social/Lemon.jpg",
                 media: [{ type: "video", src: "media/social/Lemon.mp4" }],
               },
               {
                 title: "SKYY VODKA",
                 description: "Motion graphics for SKY vodka social media",
-                thumbnail: "media/social/SKYYVODKA.mp4",
+                thumbnail: "media/social/SKYYVODKA.jpg",
                 media: [{ type: "video", src: "media/social/SKYYVODKA.mp4" }],
               },
             ],
@@ -1429,23 +1432,12 @@
             })
             .join("");
 
-          const placeholderCount = Math.max(0, MIN_CELLS - pieces.length);
-          const placeholderHtml = Array(placeholderCount)
-            .fill(
-              `
-            <div class="work-card placeholder">
-              <div class="placeholder-plus">+</div>
-              <div class="placeholder-text">Add work piece</div>
-            </div>`,
-            )
-            .join("");
-
           const titleHtml = data.sectionTitle.replaceAll("\n", "<br>");
 
           document.getElementById(id).innerHTML = `
             <div class="section-eyebrow">Featured Work</div>
             <div class="section-title">${titleHtml}</div>
-            <div class="work-grid">${cardHtml}${placeholderHtml}</div>
+            <div class="work-grid">${cardHtml}</div>
           `;
         });
       }
